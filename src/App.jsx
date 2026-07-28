@@ -9,10 +9,13 @@ import { WhyIllinoisTech } from './pages/WhyIllinoisTech'
 import { About } from './pages/About'
 import { Faq } from './pages/Faq'
 import { Contact } from './pages/Contact'
+import { Apply } from './pages/Apply'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return null
 }
 
@@ -30,6 +33,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/apply" element={<Apply />} />
         </Route>
       </Routes>
     </>

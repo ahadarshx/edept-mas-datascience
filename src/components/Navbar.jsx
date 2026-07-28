@@ -29,8 +29,8 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Button to="/contact" variant="primary" className="!py-2.5 !px-5 text-xs">
-            Talk to a Counsellor
+          <Button to="/apply" variant="primary" className="!py-2.5 !px-5 text-xs">
+            Apply Now
           </Button>
         </div>
 

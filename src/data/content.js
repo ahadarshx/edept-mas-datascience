@@ -155,26 +155,59 @@ export const whyIllinois = [
   },
 ]
 
-export const careers = {
-  roles: [
-    'Data Scientist',
-    'Senior Data Analyst',
-    'Machine Learning Engineer',
-    'AI Engineer',
-    'Data Engineer',
-    'Product & Growth Analyst',
-    'Digital Transformation Analyst',
-    'Business Analytics Manager',
-  ],
-  industries: [
-    'Consulting',
-    'Finance & FinTech',
-    'Technology & Software',
-    'Healthcare & Life Sciences',
-    'Manufacturing & Industrial Analytics',
-    'Startups & Innovation Labs',
-  ],
-}
+// Illustrative role <-> industry groupings (not placement statistics) so the
+// outcomes section can show real structure, not just two flat pill lists.
+export const careerIndustries = [
+  { key: 'consulting', label: 'Consulting' },
+  { key: 'finance', label: 'Finance & FinTech' },
+  { key: 'tech', label: 'Technology & Software' },
+  { key: 'healthcare', label: 'Healthcare & Life Sciences' },
+  { key: 'manufacturing', label: 'Manufacturing & Industrial Analytics' },
+  { key: 'startups', label: 'Startups & Innovation Labs' },
+]
+
+export const careerRoles = [
+  {
+    role: 'Data Scientist',
+    blurb: 'Builds predictive models and turns messy, real-world data into decisions.',
+    industries: ['consulting', 'finance', 'tech', 'healthcare', 'startups'],
+  },
+  {
+    role: 'Senior Data Analyst',
+    blurb: 'Owns the metrics that leadership actually looks at every week.',
+    industries: ['consulting', 'finance', 'healthcare'],
+  },
+  {
+    role: 'Machine Learning Engineer',
+    blurb: 'Ships models into production, not just notebooks.',
+    industries: ['finance', 'tech'],
+  },
+  {
+    role: 'AI Engineer',
+    blurb: 'Builds applied AI systems on top of modern model infrastructure.',
+    industries: ['tech', 'startups'],
+  },
+  {
+    role: 'Data Engineer',
+    blurb: 'Designs the pipelines everyone else’s analysis depends on.',
+    industries: ['tech', 'healthcare', 'manufacturing'],
+  },
+  {
+    role: 'Product & Growth Analyst',
+    blurb: 'Turns user behaviour data into product and growth decisions.',
+    industries: ['tech', 'startups'],
+  },
+  {
+    role: 'Digital Transformation Analyst',
+    blurb: 'Leads data-driven modernisation inside large, established organisations.',
+    industries: ['consulting', 'manufacturing'],
+  },
+  {
+    role: 'Business Analytics Manager',
+    blurb: 'Bridges the analytics team and the business decisions it informs.',
+    industries: ['consulting', 'manufacturing'],
+  },
+]
 
 export const edeptAdvantage = [
   {

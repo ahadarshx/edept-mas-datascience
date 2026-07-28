@@ -17,13 +17,18 @@ export function Contact() {
       </p>
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">
-        <Button href={mailto} variant="savings">
+        <Button to="/apply" variant="savings">
+          Apply Now
+        </Button>
+        <Button href={mailto} variant="outline">
           <Mail size={16} /> Email {contact.email}
         </Button>
-        <Button href={contact.siteUrl} variant="outline">
-          <Globe size={16} /> Visit {contact.site}
-        </Button>
       </div>
+      <p className="mt-4 text-sm text-neutral-500">
+        <a href={contact.siteUrl} className="inline-flex items-center gap-1.5 hover:text-accent">
+          <Globe size={13} /> {contact.site}
+        </a>
+      </p>
 
       <div className="mt-16 inline-flex flex-col items-center gap-3">
         <div className="rounded-xl border-[0.5px] border-neutral-200 p-3">

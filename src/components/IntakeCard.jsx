@@ -1,4 +1,5 @@
-import { CalendarClock, ChevronDown } from 'lucide-react'
+import { CalendarClock, ChevronDown, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { contact, admissionJourney } from '../data/content'
 
 function weeksUntil(dateStr) {
@@ -39,6 +40,9 @@ export function IntakeCard() {
             <span className="text-neutral-300">{step.title}</span>
           </div>
         ))}
+        <Link to="/apply" className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-savings hover:text-savings/80">
+          Start your application <ArrowRight size={14} />
+        </Link>
       </div>
     </details>
   )

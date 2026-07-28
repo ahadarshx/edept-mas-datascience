@@ -1,4 +1,4 @@
-import { MessageCircle, Globe } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 import { Button } from './Button'
 import { Reveal } from './Reveal'
 import { contact } from '../data/content'
@@ -18,11 +18,11 @@ export function CTASection() {
             Talk to an edept counsellor about eligibility, the application timeline, and exactly how much you&rsquo;ll save with the 1+1 pathway.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href={`mailto:${contact.email}`} variant="savings">
-              <MessageCircle size={16} /> Talk to a Counsellor
+            <Button to="/apply" variant="savings">
+              Apply Now
             </Button>
-            <Button href={contact.siteUrl} variant="outline" className="!text-neutral-50 !border-neutral-700 hover:!border-neutral-500">
-              <Globe size={16} /> Visit {contact.site}
+            <Button href={`mailto:${contact.email}`} variant="outline" className="!text-neutral-50 !border-neutral-700 hover:!border-neutral-500">
+              <MessageCircle size={16} /> Talk to a Counsellor
             </Button>
           </div>
           <p className="mt-6 text-sm text-neutral-500">

@@ -1,14 +1,15 @@
-import { MapPin, TrendingDown, GraduationCap, Wallet, LifeBuoy, Briefcase, Building2, ArrowRight } from 'lucide-react'
+import { MapPin, TrendingDown, GraduationCap, Wallet, LifeBuoy, ArrowRight } from 'lucide-react'
 import { Button } from '../components/Button'
 import { Section, Eyebrow, SectionHeading } from '../components/Section'
 import { PointCard } from '../components/Card'
 import { PartnerLogo } from '../components/Logo'
 import { CTASection } from '../components/CTASection'
+import { CareerOutcomes } from '../components/CareerOutcomes'
 import { CountUp } from '../components/CountUp'
 import { Reveal } from '../components/Reveal'
 import { LogoMarquee } from '../components/LogoMarquee'
 import { HeroSavingsCard } from '../components/HeroSavingsCard'
-import { pillars, tracks, cost, careers, contact } from '../data/content'
+import { pillars, tracks, cost } from '../data/content'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
 
@@ -35,7 +36,7 @@ export function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
 
         <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-24 md:pt-40 md:pb-32">
-          <p className="font-mono uppercase tracking-widest text-[10px] text-savings">A Dual-Degree Global Pathway by edept</p>
+          <p className="font-mono uppercase tracking-widest text-[10px] text-savings">A Global Pathway Program by edept</p>
           <h1 className="mt-4 max-w-3xl font-serif tracking-tight text-balance text-4xl sm:text-5xl md:text-6xl leading-[1.1] text-white">
             Master of Applied Science in Data Science
           </h1>
@@ -44,8 +45,8 @@ export function Home() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href={`mailto:${contact.email}`} variant="savings">
-              Talk to a Counsellor
+            <Button to="/apply" variant="savings">
+              Apply Now
             </Button>
             <Button to="/cost" variant="outline" className="!text-white !border-white/40 hover:!border-white">
               See the Savings <ArrowRight size={15} className="ml-1" />
@@ -123,7 +124,7 @@ export function Home() {
       {/* Bold statement */}
       <Section className="!py-20 md:!py-28 bg-ink" containerClassName="text-center">
         <p className="font-serif tracking-tight text-balance text-3xl md:text-5xl leading-[1.15] text-neutral-50">
-          Same professors. Same classrooms. <span className="text-savings">Same diploma.</span>
+          Same professors. Same classrooms. <span className="text-savings">Same degree.</span>
           <br />
           A fraction of the cost.
         </p>
@@ -157,41 +158,7 @@ export function Home() {
       </Section>
 
       {/* Careers */}
-      <Section className="bg-white">
-        <SectionHeading eyebrow="Careers &amp; Industries" title="Where this degree takes you" />
-        <div className="mt-12 grid md:grid-cols-2 gap-x-12 gap-y-10">
-          <div>
-            <p className="flex items-center gap-2 text-sm font-medium text-neutral-900">
-              <Briefcase size={16} className="text-accent" /> Top Job Roles
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {careers.roles.map((r) => (
-                <li
-                  key={r}
-                  className="rounded-full border-[0.5px] border-neutral-300 px-4 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:border-accent hover:text-accent hover:scale-105"
-                >
-                  {r}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="flex items-center gap-2 text-sm font-medium text-neutral-900">
-              <Building2 size={16} className="text-accent" /> Hiring Industries
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {careers.industries.map((r) => (
-                <li
-                  key={r}
-                  className="rounded-full border-[0.5px] border-neutral-300 px-4 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:border-accent hover:text-accent hover:scale-105"
-                >
-                  {r}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
+      <CareerOutcomes />
 
       {/* Hiring companies marquee */}
       <Reveal className="bg-white border-y-[0.5px] border-neutral-200 py-10">

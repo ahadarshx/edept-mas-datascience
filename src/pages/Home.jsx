@@ -70,7 +70,7 @@ export function Home() {
       <Section className="!py-10 md:!py-14 border-b-[0.5px] border-neutral-200">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <Badge icon={MapPin} label="6 Months in India" />
-          <Badge icon={TrendingDown} label={`Save ≈${cost.savingPct}% on Tuition`} />
+          <Badge icon={TrendingDown} label={`Save ≈${cost.allInSavingPct}% All-In with Living Costs`} />
           <Badge icon={GraduationCap} label="Earn a U.S. STEM Degree" />
         </div>
       </Section>

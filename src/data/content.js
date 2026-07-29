@@ -32,7 +32,7 @@ export const cost = {
   savingUsd: 12445,
   savingInr: 1040000,
   savingPct: 20,
-  allInSavingPct: 32,
+  allInSavingPct: 33,
   livingCostRange: '$12,000–$15,000/year',
 }
 
@@ -354,8 +354,8 @@ export const faqs = [
     a: 'You save roughly 20% on tuition (more once living costs are included), ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech.',
   },
   {
-    q: 'Are placements guaranteed?',
-    a: 'No program guarantees jobs. However, career support and employer exposure are integral parts of the program.',
+    q: 'Is there any placement support available?',
+    a: 'Yes, we provide career support and employer exposure, though placements are not guaranteed.',
   },
   {
     q: 'What if my visa is not approved?',

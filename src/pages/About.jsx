@@ -37,9 +37,9 @@ const galleryImages = [
 
 function SubPoint({ title, body, icon: Icon }) {
   return (
-    <div>
+    <div className="group rounded-lg transition-transform duration-300 hover:-translate-y-0.5">
       <div className="flex items-center gap-2">
-        <Icon size={16} className="text-accent" />
+        <Icon size={16} className="text-accent transition-transform duration-300 group-hover:scale-110" />
         <h3 className="font-medium text-neutral-900">{title}</h3>
       </div>
       <p className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{body}</p>

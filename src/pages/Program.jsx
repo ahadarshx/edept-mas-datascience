@@ -2,12 +2,19 @@ import { BookOpen } from 'lucide-react'
 import { Section, Eyebrow } from '../components/Section'
 import { CTASection } from '../components/CTASection'
 import { Reveal } from '../components/Reveal'
+import { CountUp } from '../components/CountUp'
 import { tracks, degreeName } from '../data/content'
 
 const trackImages = {
   india: 'images/mahindra-university/4.jpg',
   usa: 'images/illinois-tech/3.jpg',
 }
+
+const stats = [
+  { value: 33, suffix: '', label: 'Total Credits' },
+  { value: 2, suffix: '', label: 'Countries' },
+  { value: 1, suffix: '', label: 'U.S. STEM Degree' },
+]
 
 export function Program() {
   return (
@@ -20,6 +27,16 @@ export function Program() {
         <p className="mt-4 max-w-xl text-neutral-600 leading-relaxed">
           The {degreeName} is a single 33-credit curriculum. Your first 9 credits transfer in fully from Mahindra University, and the remaining 24 are completed on campus at Illinois Institute of Technology, Chicago.
         </p>
+        <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 80} className="transition-transform duration-300 hover:-translate-y-0.5">
+              <p className="font-serif text-4xl tracking-tight text-neutral-900">
+                <CountUp value={s.value} suffix={s.suffix} />
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-neutral-500">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       <Section className="!pt-0" containerClassName="space-y-20">

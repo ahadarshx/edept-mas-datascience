@@ -3,6 +3,7 @@ import { Section, Eyebrow } from '../components/Section'
 import { Timeline } from '../components/Timeline'
 import { CTASection } from '../components/CTASection'
 import { IntakeCard } from '../components/IntakeCard'
+import { Reveal } from '../components/Reveal'
 import { admissionCriteria, admissionJourney } from '../data/content'
 
 const journeyIcons = [FileText, ClipboardCheck, MailCheck, Plane, BookOpen, Landmark, Award]
@@ -32,11 +33,13 @@ export function Admissions() {
         <div>
           <p className="font-mono uppercase tracking-widest text-[10px] text-accent">Admission Criteria</p>
           <ul className="mt-4 space-y-3">
-            {admissionCriteria.map((c) => (
-              <li key={c} className="flex gap-2 text-neutral-600 leading-relaxed">
-                <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-accent" />
-                <span>{c}</span>
-              </li>
+            {admissionCriteria.map((c, i) => (
+              <Reveal key={c} delay={i * 60}>
+                <li className="group flex gap-2 rounded-lg text-neutral-600 leading-relaxed transition-transform duration-300 hover:translate-x-1">
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-accent transition-transform duration-300 group-hover:scale-110" />
+                  <span>{c}</span>
+                </li>
+              </Reveal>
             ))}
           </ul>
 

@@ -26,12 +26,9 @@ export const cost = {
   usPortionCredits: 24,
   usPortionCost: 44424,
   indiaPortionCredits: 9,
-  indiaPortionInr: 317000,
   indiaPortionUsd: 3776,
   pathwayTotal: 48200,
   savingUsd: 12883,
-  savingInr: 1077000,
-  savingPct: 21,
   allInSavingPct: 33,
   livingCostRange: '$12,000–$15,000/year',
 }
@@ -43,7 +40,7 @@ export const pillars = [
   },
   {
     title: 'Smart Cost Structure',
-    body: 'Reduce your overall cost by beginning studies in India: the same 33-credit degree, ~21% less tuition.',
+    body: 'Reduce your overall cost by beginning studies in India: the same 33-credit degree, up to ~33% lower all-in cost.',
   },
   {
     title: 'End-to-End Support',
@@ -351,7 +348,7 @@ export const faqs = [
   },
   {
     q: 'Is this better than a full MAS abroad?',
-    a: 'You save roughly 21% on tuition (more once living costs are included), ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech.',
+    a: 'You save up to roughly 33% all-in once living costs are included, ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech.',
   },
   {
     q: 'Is there any placement support available?',

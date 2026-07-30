@@ -31,7 +31,7 @@ export function Contact() {
       </p>
 
       <div className="mt-16 inline-flex flex-col items-center gap-3">
-        <div className="rounded-xl border-[0.5px] border-neutral-200 p-3">
+        <div className="rounded-xl border-[0.5px] border-neutral-200 p-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105">
           <img src="images/misc/qr-edept.png" alt={`QR code to ${contact.site}`} width="180" height="180" />
         </div>
         <p className="font-mono uppercase tracking-widest text-[10px] text-neutral-500">Scan to Apply</p>

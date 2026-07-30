@@ -4,7 +4,6 @@ import { CountUp } from './CountUp'
 import { Reveal } from './Reveal'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
-const fmtInr = (n) => `₹${n.toLocaleString('en-IN')}`
 
 const fullPct = 100
 const pathwayPct = Math.round((cost.pathwayTotal / cost.fullCost) * 100)
@@ -14,12 +13,12 @@ export function CostComparison() {
     <div>
       {/* Hero figure */}
       <div className="text-center">
-        <p className="font-mono uppercase tracking-widest text-[10px] text-savings">Total Tuition Saving</p>
+        <p className="font-mono uppercase tracking-widest text-[10px] text-savings">Total Savings</p>
         <p className="mt-3 font-serif tracking-tight text-6xl md:text-8xl leading-none text-neutral-900">
           <CountUp value={cost.savingUsd} prefix="$" />
         </p>
         <p className="mt-4 text-neutral-600">
-          &asymp; {fmtInr(cost.savingInr)} &nbsp;&middot;&nbsp; &asymp;{cost.savingPct}% less tuition &nbsp;&middot;&nbsp; up to &asymp;{cost.allInSavingPct}% all-in with living costs
+          up to &asymp;{cost.allInSavingPct}% lower, all-in with living costs
         </p>
       </div>
 
@@ -56,9 +55,7 @@ export function CostComparison() {
             </tr>
             <tr className="transition-colors duration-300 hover:bg-neutral-50">
               <td className="px-5 py-3 text-neutral-900">1+1: India portion ({cost.indiaPortionCredits} credits)</td>
-              <td className="px-5 py-3 font-mono tabular-nums text-neutral-600">
-                {fmtInr(cost.indiaPortionInr)} + 18% GST
-              </td>
+              <td className="px-5 py-3 font-mono tabular-nums text-neutral-600">Mahindra University</td>
               <td className="px-5 py-3 font-mono tabular-nums text-right text-neutral-900">&asymp; {fmt(cost.indiaPortionUsd)}</td>
             </tr>
             <tr className="bg-accent-muted/30">
@@ -74,7 +71,7 @@ export function CostComparison() {
 
       <p className="mt-6 text-sm text-neutral-500 max-w-2xl">
         The lever is those {cost.indiaPortionCredits} credits: at Illinois Tech they&rsquo;d cost {cost.indiaPortionCredits} &times; ${cost.perCredit} ={' '}
-        {fmt(cost.indiaPortionCredits * cost.perCredit)}, but done with Mahindra University in India they cost {fmtInr(cost.indiaPortionInr)} &asymp; {fmt(cost.indiaPortionUsd)}.
+        {fmt(cost.indiaPortionCredits * cost.perCredit)}, but done with Mahindra University in India they cost approximately {fmt(cost.indiaPortionUsd)}.
         Living expenses on the USA track run approximately {cost.livingCostRange}.
       </p>
     </div>

@@ -139,7 +139,7 @@ export function Home() {
               The same 33-credit degree, {fmt(cost.savingUsd)} lighter.
             </h2>
             <p className="mt-4 text-neutral-600 leading-relaxed max-w-lg">
-              Full program at Illinois Tech: {fmt(cost.fullCost)}. The 1+1 pathway: &asymp;{fmt(cost.pathwayTotal)}. Same degree, same university, {cost.savingPct}% less tuition.
+              Full program at Illinois Tech: {fmt(cost.fullCost)}. The 1+1 pathway: &asymp;{fmt(cost.pathwayTotal)}. Same degree, same university, up to {cost.allInSavingPct}% lower all-in cost.
             </p>
             <div className="mt-8">
               <Button to="/cost" variant="primary">
@@ -152,7 +152,7 @@ export function Home() {
             <p className="mt-3 font-serif text-5xl md:text-6xl tracking-tight text-neutral-50">
               <CountUp value={cost.savingUsd} prefix="$" />
             </p>
-            <p className="mt-2 text-sm text-neutral-400">&asymp;{cost.savingPct}% less tuition</p>
+            <p className="mt-2 text-sm text-neutral-400">up to &asymp;{cost.allInSavingPct}% lower, all-in</p>
           </div>
         </div>
       </Section>

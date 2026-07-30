@@ -28,52 +28,51 @@ export function CostComparison() {
         <BarRow label="1+1 Pathway: India + Chicago" value={fmt(cost.pathwayTotal)} pct={pathwayPct} tone="accent" />
       </div>
 
-      {/* Detail breakdown table */}
-      <Reveal className="mt-14 overflow-x-auto rounded-xl border-[0.5px] border-neutral-200">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b-[0.5px] border-neutral-200 text-left text-neutral-500">
-              <th className="px-5 py-3 font-normal">Tuition, firm numbers</th>
-              <th className="px-5 py-3 font-normal font-mono text-xs">Credits</th>
-              <th className="px-5 py-3 font-normal font-mono text-xs text-right">Cost</th>
-            </tr>
-          </thead>
-          <tbody className="[&>tr]:border-b-[0.5px] [&>tr]:border-neutral-100 last:[&>tr]:border-0">
-            <tr className="transition-colors duration-300 hover:bg-neutral-50">
-              <td className="px-5 py-3 text-neutral-900">Full program at Illinois Tech</td>
-              <td className="px-5 py-3 font-mono tabular-nums text-neutral-600">
-                {cost.fullCredits} &times; ${cost.perCredit}
-              </td>
-              <td className="px-5 py-3 font-mono tabular-nums text-right text-neutral-900">{fmt(cost.fullCost)}</td>
-            </tr>
-            <tr className="transition-colors duration-300 hover:bg-neutral-50">
-              <td className="px-5 py-3 text-neutral-900">1+1: US portion (Illinois Tech)</td>
-              <td className="px-5 py-3 font-mono tabular-nums text-neutral-600">
-                {cost.usPortionCredits} &times; ${cost.perCredit}
-              </td>
-              <td className="px-5 py-3 font-mono tabular-nums text-right text-neutral-900">{fmt(cost.usPortionCost)}</td>
-            </tr>
-            <tr className="transition-colors duration-300 hover:bg-neutral-50">
-              <td className="px-5 py-3 text-neutral-900">1+1: India portion ({cost.indiaPortionCredits} credits)</td>
-              <td className="px-5 py-3 font-mono tabular-nums text-neutral-600">Mahindra University</td>
-              <td className="px-5 py-3 font-mono tabular-nums text-right text-neutral-900">&asymp; {fmt(cost.indiaPortionUsd)}</td>
-            </tr>
-            <tr className="bg-accent-muted/30">
-              <td className="px-5 py-3 font-semibold text-neutral-900">1+1 total</td>
-              <td className="px-5 py-3" />
-              <td className="px-5 py-3 font-mono tabular-nums text-right font-semibold text-neutral-900">
-                &asymp; {fmt(cost.pathwayTotal)}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </Reveal>
+      {/* Side-by-side firm-number comparison */}
+      <div className="mt-14 grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch">
+        <Reveal className="rounded-2xl border-[0.5px] border-neutral-200 bg-white p-6 md:p-8">
+          <p className="font-mono uppercase tracking-widest text-[10px] text-neutral-500">Full Program</p>
+          <h3 className="mt-1 font-serif text-xl tracking-tight text-neutral-900">Illinois Tech Only</h3>
+          <div className="mt-6 space-y-3 text-sm">
+            <LineItem label={`${cost.fullCredits} credits × $${cost.perCredit}`} value={fmt(cost.fullCost)} />
+          </div>
+          <div className="mt-8 border-t-[0.5px] border-neutral-200 pt-4">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Total</p>
+            <p className="mt-1 font-serif text-3xl tracking-tight text-neutral-900">{fmt(cost.fullCost)}</p>
+          </div>
+        </Reveal>
 
-      <p className="mt-6 text-sm text-neutral-500 max-w-2xl">
-        The lever is those {cost.indiaPortionCredits} credits: at Illinois Tech they&rsquo;d cost {cost.indiaPortionCredits} &times; ${cost.perCredit} ={' '}
-        {fmt(cost.indiaPortionCredits * cost.perCredit)}, but done with Mahindra University in India they cost approximately {fmt(cost.indiaPortionUsd)}.
-        Living expenses on the USA track run approximately {cost.livingCostRange}.
-      </p>
+        <div className="hidden md:flex items-center justify-center">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full border-[0.5px] border-neutral-200 bg-white font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+            vs
+          </div>
+        </div>
+
+        <Reveal delay={100} className="relative rounded-2xl border-[1.5px] border-accent bg-accent-muted/20 p-6 md:p-8">
+          <span className="absolute -top-3 right-6 rounded-full bg-savings px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-ink shadow-[0_4px_12px_rgb(0,0,0,0.15)]">
+            Save {fmt(cost.savingUsd)}
+          </span>
+          <p className="font-mono uppercase tracking-widest text-[10px] text-accent">1+1 Pathway</p>
+          <h3 className="mt-1 font-serif text-xl tracking-tight text-neutral-900">India + Chicago</h3>
+          <div className="mt-6 space-y-3 text-sm">
+            <LineItem label={`Illinois Tech · ${cost.usPortionCredits} credits × $${cost.perCredit}`} value={fmt(cost.usPortionCost)} />
+            <LineItem label={`Mahindra University · ${cost.indiaPortionCredits} credits`} value={`≈ ${fmt(cost.indiaPortionUsd)}`} />
+          </div>
+          <div className="mt-8 border-t-[0.5px] border-accent/25 pt-4">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-accent">Total</p>
+            <p className="mt-1 font-serif text-3xl tracking-tight text-neutral-900">&asymp; {fmt(cost.pathwayTotal)}</p>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  )
+}
+
+function LineItem({ label, value }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4">
+      <span className="text-neutral-600">{label}</span>
+      <span className="font-mono tabular-nums text-neutral-900">{value}</span>
     </div>
   )
 }

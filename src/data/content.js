@@ -30,7 +30,6 @@ export const cost = {
   pathwayTotal: 48200,
   savingUsd: 12883,
   allInSavingPct: 33,
-  livingCostRange: '$12,000–$15,000/year',
 }
 
 export const pillars = [

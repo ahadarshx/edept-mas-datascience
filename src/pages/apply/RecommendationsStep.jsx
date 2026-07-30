@@ -4,7 +4,7 @@ function Recommender({ number, label, values, prefix }) {
   return (
     <div className="mt-6 rounded-xl border-[0.5px] border-neutral-200 bg-neutral-50 p-5">
       <p className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-widest text-accent">
-        Recommender {number} — {label} <span className="text-danger">*</span>
+        Recommender {number}: {label} <span className="text-danger">*</span>
       </p>
       <FieldGrid cols={3}>
         <TextField name={`${prefix}_name`} label="Full Name" required defaultValue={values[`${prefix}_name`]} placeholder="Prof. / Dr. Name" />

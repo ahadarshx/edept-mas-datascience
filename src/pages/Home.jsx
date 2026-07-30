@@ -44,8 +44,8 @@ export function Home() {
             Master of Applied Science in Data Science
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 leading-relaxed">
-            One semester in India, three in Chicago — leave with a PGP Certificate and a U.S. STEM degree with OPT from Illinois Institute of Technology, at up to{' '}
-            <Highlight>&asymp;{cost.allInSavingPct}% lower all-in cost</Highlight>.
+            One semester in India, three in Chicago. Earn a PGP Certificate and a U.S. STEM degree with OPT from Illinois Institute of Technology, at up to{' '}
+            <Highlight>&asymp;{cost.allInSavingPct}% lower</Highlight> all-in cost.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -145,7 +145,7 @@ export function Home() {
             </h2>
             <p className="mt-4 text-neutral-600 leading-relaxed max-w-lg">
               Full program at Illinois Tech: {fmt(cost.fullCost)}. The 1+1 pathway: &asymp;{fmt(cost.pathwayTotal)}. Same degree, same university, up to{' '}
-              <Highlight>&asymp;{cost.allInSavingPct}% lower all-in cost</Highlight>.
+              <Highlight>&asymp;{cost.allInSavingPct}% lower</Highlight> all-in cost.
             </p>
             <div className="mt-8">
               <Button to="/cost" variant="primary">
@@ -159,7 +159,7 @@ export function Home() {
               <CountUp value={cost.savingUsd} prefix="$" />
             </p>
             <p className="mt-2 text-sm text-neutral-400">
-              up to <Highlight>&asymp;{cost.allInSavingPct}% lower, all-in</Highlight>
+              up to <Highlight>&asymp;{cost.allInSavingPct}% lower</Highlight>, all-in
             </p>
           </div>
         </div>

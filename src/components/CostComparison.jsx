@@ -19,7 +19,7 @@ export function CostComparison() {
           <CountUp value={cost.savingUsd} prefix="$" />
         </p>
         <p className="mt-4 text-neutral-600">
-          up to <Highlight>&asymp;{cost.allInSavingPct}% lower, all-in with living costs</Highlight>
+          up to <Highlight>&asymp;{cost.allInSavingPct}% lower</Highlight> all-in, with living costs
         </p>
       </div>
 

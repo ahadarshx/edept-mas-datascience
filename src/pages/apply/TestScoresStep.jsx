@@ -65,11 +65,11 @@ export function TestScoresStep({ values = {} }) {
           label="Score Report Sent to Illinois Tech?"
           required
           defaultValue={values.score_sent}
-          options={['Yes — sent directly from testing agency (Code: 1318)', 'Not yet — will send before enrollment', 'Not applicable — English medium waiver claimed']}
+          options={['Yes, sent directly from testing agency (Code: 1318)', 'Not yet, will send before enrollment', 'Not applicable, English medium waiver claimed']}
         />
       </FieldGrid>
 
-      <SubHeading hint="(Optional — submission encouraged but not required)">GRE General Test</SubHeading>
+      <SubHeading hint="(Optional: submission encouraged but not required)">GRE General Test</SubHeading>
       <InfoBanner>
         This pathway program is GRE Optional. Sharing a strong GRE score can strengthen your application. If submitting, use Illinois Tech code <strong>1318</strong>. Scores must be within 5 years.
       </InfoBanner>

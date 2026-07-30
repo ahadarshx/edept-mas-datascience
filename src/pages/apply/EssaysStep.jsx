@@ -35,7 +35,7 @@ export function EssaysStep({ values = {} }) {
         <TextareaField
           name="essay_explain"
           label="Is there anything in your academic record or application that requires explanation?"
-          hint="(Optional — e.g. grade dip, gap year)"
+          hint="(Optional: e.g. grade dip, gap year)"
           defaultValue={values.essay_explain}
           placeholder="Briefly explain any extenuating circumstances if applicable..."
         />

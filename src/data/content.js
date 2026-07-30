@@ -338,7 +338,7 @@ export const admissionJourney = [
 export const faqs = [
   {
     q: 'What credentials will I receive?',
-    a: 'Two: a PGP Certificate in Data Science from Mahindra University for the India phase, and a Master of Applied Science (MAS) in Data Science — a STEM-designated degree — from Illinois Institute of Technology, Chicago.',
+    a: 'Two: a PGP Certificate in Data Science from Mahindra University for the India phase, and a Master of Applied Science (MAS) in Data Science (a STEM-designated degree) from Illinois Institute of Technology, Chicago.',
   },
   {
     q: 'How long does the program take, and where?',
@@ -350,7 +350,7 @@ export const faqs = [
   },
   {
     q: 'Is this better than a full MAS abroad?',
-    a: 'You save up to roughly 33% all-in once living costs are included, ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech — plus the Mahindra PGP Certificate along the way.',
+    a: 'You save up to roughly 33% all-in once living costs are included, ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech, plus the Mahindra PGP Certificate along the way.',
   },
   {
     q: 'Is there any placement support available?',

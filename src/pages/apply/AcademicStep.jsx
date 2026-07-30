@@ -36,7 +36,7 @@ export function AcademicStep({ values = {} }) {
           label="Current Status"
           required
           defaultValue={values.ug_status}
-          options={['Completed — Degree Awarded', 'Final Year — Awaiting Results', 'In Progress']}
+          options={['Completed (Degree Awarded)', 'Final Year (Awaiting Results)', 'In Progress']}
         />
         <SelectField
           name="ug_medium"
@@ -48,7 +48,7 @@ export function AcademicStep({ values = {} }) {
         <TextField name="ug_country" label="Country of Study" required defaultValue={values.ug_country || 'India'} />
       </FieldGrid>
 
-      <SubHeading hint="(postgraduate or second bachelor's — if applicable)">Additional Degree</SubHeading>
+      <SubHeading hint="(postgraduate or second bachelor's, if applicable)">Additional Degree</SubHeading>
       <FieldGrid>
         <TextField span={2} name="pg_institution" label="Institution Name" defaultValue={values.pg_institution} placeholder="Name of institution" />
         <TextField span={2} name="pg_degree" label="Degree & Specialisation" defaultValue={values.pg_degree} placeholder="e.g. M.Sc. in Statistics" />

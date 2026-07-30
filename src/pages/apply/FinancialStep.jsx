@@ -19,7 +19,7 @@ export function FinancialStep({ values = {} }) {
         Mahindra University assesses ability to pay program fees. Illinois Tech (F-1 visa) requires a Financial Affidavit of Support covering at least one year of tuition + estimated living expenses (~USD 35,000–45,000/year). Provide details for both phases.
       </InfoBanner>
 
-      <PhaseCard badge="Phase I" badgeClass="bg-emerald-100 text-emerald-800" title="Mahindra University, Hyderabad — India">
+      <PhaseCard badge="Phase I" badgeClass="bg-emerald-100 text-emerald-800" title="Mahindra University, Hyderabad, India">
         <FieldGrid>
           <TextField name="india_tuition" label="Estimated Annual Tuition (INR)" required defaultValue={values.india_tuition} placeholder="e.g. ₹5,00,000" />
           <TextField name="india_living_cost" label="Estimated Annual Living Cost (INR)" defaultValue={values.india_living_cost} placeholder="e.g. ₹2,40,000" />
@@ -28,7 +28,7 @@ export function FinancialStep({ values = {} }) {
             label="Primary Funding Source"
             required
             defaultValue={values.india_funding_source}
-            options={['Personal / Family savings', 'Education loan — Indian bank', 'Employer sponsorship', 'Government scholarship', 'Private scholarship', 'Combination of sources']}
+            options={['Personal / Family savings', 'Education loan (Indian bank)', 'Employer sponsorship', 'Government scholarship', 'Private scholarship', 'Combination of sources']}
           />
           <TextField name="india_sponsor_name" label="Sponsor Name" hint="(if applicable)" defaultValue={values.india_sponsor_name} placeholder="Parent / Guardian / Employer name" />
           <SelectField
@@ -72,7 +72,7 @@ export function FinancialStep({ values = {} }) {
         </FieldGrid>
       </PhaseCard>
 
-      <PhaseCard badge="Phase II" badgeClass="bg-accent-muted text-accent" title="Illinois Institute of Technology, Chicago — USA">
+      <PhaseCard badge="Phase II" badgeClass="bg-accent-muted text-accent" title="Illinois Institute of Technology, Chicago, USA">
         <WarningBanner title="F-1 Visa Requirement">
           Illinois Tech requires a Financial Affidavit of Support for I-20 issuance. Funds must be liquid, available in USD, and sufficient for at least one academic year. Documents must be dated within 6 months of program start.
         </WarningBanner>
@@ -86,7 +86,7 @@ export function FinancialStep({ values = {} }) {
             defaultValue={values.us_funding_source}
             options={[
               'Personal / Family savings (in USD or convertible)',
-              'Education loan — Indian bank (Forex)',
+              'Education loan (Indian bank, Forex)',
               'International education loan (USD)',
               'Employer sponsorship',
               'Government scholarship (e.g. ICCR)',

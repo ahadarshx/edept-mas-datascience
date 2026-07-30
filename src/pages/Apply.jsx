@@ -89,7 +89,7 @@ export function Apply() {
           MAS in Data Science Application
         </h1>
         <p className="mt-4 max-w-xl text-neutral-600 leading-relaxed">
-          Mahindra University → Illinois Institute of Technology, Chicago. Complete all 8 sections below — you can move back and forth freely before submitting.
+          Mahindra University → Illinois Institute of Technology, Chicago. Complete all 8 sections below; you can move back and forth freely before submitting.
         </p>
       </Section>
 

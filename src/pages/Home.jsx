@@ -13,7 +13,7 @@ import { HeroSavingsCard } from '../components/HeroSavingsCard'
 import { GlowOrb } from '../components/GlowOrb'
 import { BrochureButton } from '../components/BrochureButton'
 import { Highlight } from '../components/Highlight'
-import { JourneyPath } from '../components/JourneyPath'
+import { LocationMap } from '../components/LocationMap'
 import { pillars, tracks, cost } from '../data/content'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
@@ -89,7 +89,7 @@ export function Home() {
           body="Start where it costs less, finish where the degree carries the most weight: one continuous, fully-aligned curriculum."
         />
 
-        <JourneyPath />
+        <LocationMap />
 
         <div className="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-10">
           {tracks.map((t, i) => (

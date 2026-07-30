@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { MapPin, TrendingDown, GraduationCap, Wallet, LifeBuoy, ArrowRight } from 'lucide-react'
 import { Button } from '../components/Button'
 import { Section, Eyebrow, SectionHeading } from '../components/Section'
@@ -13,8 +12,8 @@ import { HeroSavingsCard } from '../components/HeroSavingsCard'
 import { GlowOrb } from '../components/GlowOrb'
 import { BrochureButton } from '../components/BrochureButton'
 import { Highlight } from '../components/Highlight'
-import { LocationMap } from '../components/LocationMap'
-import { pillars, tracks, cost } from '../data/content'
+import { BoardingPass } from '../components/BoardingPass'
+import { pillars, cost } from '../data/content'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
 
@@ -82,53 +81,18 @@ export function Home() {
       </Section>
 
       {/* Global hybrid model */}
-      <Section id="model">
+      <Section id="model" containerClassName="text-center">
         <SectionHeading
+          className="mx-auto"
           eyebrow="The Model"
           title="A Global Hybrid Master&rsquo;s Model"
           body="Start where it costs less, finish where the degree carries the most weight: one continuous, fully-aligned curriculum."
         />
 
-        <LocationMap />
-
-        <div className="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-10">
-          {tracks.map((t, i) => (
-            <Fragment key={t.key}>
-              <Reveal delay={i * 100} className="h-full">
-                <div className="group flex h-full flex-col rounded-xl border-[0.5px] border-neutral-200 overflow-hidden">
-                  <div className="relative overflow-hidden">
-                    <span
-                      className={`absolute left-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full font-mono text-xs font-semibold text-white shadow-[0_2px_10px_rgb(0,0,0,0.25)] ${
-                        i === 0 ? 'bg-accent' : 'bg-savings'
-                      }`}
-                    >
-                      {i + 1}
-                    </span>
-                    <img
-                      src={t.key === 'india' ? 'images/mahindra-university/6.jpg' : 'images/illinois-tech/1.jpg'}
-                      alt={t.institution}
-                      className="h-48 w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="font-mono uppercase tracking-widest text-[10px] text-accent">{t.label}</p>
-                    <h3 className="mt-2 font-serif text-2xl tracking-tight text-neutral-900">{t.institution}</h3>
-                    <p className="mt-1 text-sm font-medium text-savings">{t.duration}</p>
-                    <p className="mt-3 text-neutral-600 leading-relaxed">{t.body}</p>
-                  </div>
-                </div>
-              </Reveal>
-              {i === 0 && (
-                <div className="-my-4 flex justify-center md:hidden">
-                  <div className="flex flex-col items-center gap-1 text-neutral-300">
-                    <span className="h-8 w-px border-l-2 border-dashed border-neutral-300" />
-                    <ArrowRight size={14} className="rotate-90 text-accent" />
-                  </div>
-                </div>
-              )}
-            </Fragment>
-          ))}
+        <div className="mt-14">
+          <BoardingPass />
         </div>
+
         <div className="mt-10">
           <Button to="/program" variant="outline">
             View Full Curriculum <ArrowRight size={15} className="ml-1" />

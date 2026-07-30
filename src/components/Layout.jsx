@@ -5,7 +5,7 @@ import { ScrollProgress } from './ScrollProgress'
 
 export function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-base)]">
+    <div className="bg-app min-h-screen flex flex-col">
       <ScrollProgress />
       <Navbar />
       <main className="flex-1">

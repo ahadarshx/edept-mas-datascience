@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { cost } from '../data/content'
 import { CountUp } from './CountUp'
+import { Highlight } from './Highlight'
 import { Reveal } from './Reveal'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
@@ -18,7 +19,7 @@ export function CostComparison() {
           <CountUp value={cost.savingUsd} prefix="$" />
         </p>
         <p className="mt-4 text-neutral-600">
-          up to &asymp;{cost.allInSavingPct}% lower, all-in with living costs
+          up to <Highlight>&asymp;{cost.allInSavingPct}% lower, all-in with living costs</Highlight>
         </p>
       </div>
 

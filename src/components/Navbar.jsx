@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { Menu, X, MessageCircle } from 'lucide-react'
 import { EdeptLogo } from './Logo'
 import { Button } from './Button'
-import { BrochureButton } from './BrochureButton'
 import { nav, contact } from '../data/content'
 
 const whatsappUrl = `https://wa.me/${contact.whatsapp}`
@@ -32,7 +31,6 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <BrochureButton variant="outline" className="!py-2.5 !px-5 text-xs" />
           <Button to="/apply" variant="primary" className="!py-2.5 !px-5 text-xs">
             Apply Now
           </Button>
@@ -66,7 +64,6 @@ export function Navbar() {
             <Button to="/apply" variant="primary" className="w-full justify-center" onClick={() => setOpen(false)}>
               Apply Now
             </Button>
-            <BrochureButton variant="outline" className="w-full justify-center" />
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="outline" className="w-full justify-center" onClick={() => setOpen(false)}>
               <MessageCircle size={16} /> Talk to a Counsellor
             </Button>

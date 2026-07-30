@@ -49,3 +49,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+/* Ambient corner washes, echoing Scaler's very-low-opacity radial gradients
+   instead of a flat page background. */
+.bg-app {
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 55% 45% at 90% 0%, rgba(18, 83, 159, 0.07), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 5% 15%, rgba(237, 161, 48, 0.05), transparent 60%);
+}
+
+/* Sitewide fine-grain texture over everything, at an intentionally low
+   opacity so it reads as tactile paper rather than visible noise. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

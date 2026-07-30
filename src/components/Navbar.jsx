@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, MessageCircle } from 'lucide-react'
 import { EdeptLogo } from './Logo'
 import { Button } from './Button'
-import { nav } from '../data/content'
+import { BrochureButton } from './BrochureButton'
+import { nav, contact } from '../data/content'
+
+const whatsappUrl = `https://wa.me/${contact.whatsapp}`
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -16,19 +19,20 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b-[0.5px] border-neutral-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <NavLink to="/" className="flex items-center gap-2">
+        <a href={contact.siteUrl} className="flex items-center gap-2">
           <EdeptLogo className="h-6" />
-        </NavLink>
+        </a>
 
         <nav className="hidden lg:flex items-center gap-8">
           {nav.map((item) => (
-            <NavLink key={item.to} to={item.to} className={linkClass}>
+            <NavLink key={item.to} to={item.to} end={item.to === '/'} className={linkClass}>
               {item.label}
             </NavLink>
           ))}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
+          <BrochureButton variant="outline" className="!py-2.5 !px-5 text-xs" />
           <Button to="/apply" variant="primary" className="!py-2.5 !px-5 text-xs">
             Apply Now
           </Button>
@@ -49,17 +53,24 @@ export function Navbar() {
             <NavLink
               key={item.to}
               to={item.to}
+              end={item.to === '/'}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `py-2 text-sm ${isActive ? 'text-accent font-medium' : 'text-neutral-600'}`
+                `py-2.5 text-base ${isActive ? 'text-accent font-medium' : 'text-neutral-600'}`
               }
             >
               {item.label}
             </NavLink>
           ))}
-          <Button to="/contact" variant="primary" className="mt-3 w-full" onClick={() => setOpen(false)}>
-            Talk to a Counsellor
-          </Button>
+          <div className="mt-4 flex flex-col gap-2.5">
+            <Button to="/apply" variant="primary" className="w-full justify-center" onClick={() => setOpen(false)}>
+              Apply Now
+            </Button>
+            <BrochureButton variant="outline" className="w-full justify-center" />
+            <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="outline" className="w-full justify-center" onClick={() => setOpen(false)}>
+              <MessageCircle size={16} /> Talk to a Counsellor
+            </Button>
+          </div>
         </nav>
       )}
     </header>

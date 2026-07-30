@@ -1,4 +1,5 @@
 export const nav = [
+  { label: 'Home', to: '/' },
   { label: 'Program', to: '/program' },
   { label: 'Cost & Savings', to: '/cost' },
   { label: 'Admissions', to: '/admissions' },
@@ -11,13 +12,15 @@ export const contact = {
   site: 'www.edept.co',
   siteUrl: 'https://www.edept.co',
   email: 'admissions@edept.co',
-  qrTarget: 'https://www.edept.co',
-  intake: 'Fall 2026 (August / September)',
-  intakeTargetDate: '2026-08-15',
+  // TODO: placeholder — swap in the real WhatsApp business number once provided.
+  whatsapp: '910000000000',
+  intake: 'Spring 2027 (January)',
+  intakeTargetDate: '2027-01-15',
 }
 
 export const degreeName = 'Master of Applied Science (MAS) in Data Science'
 export const degreeShort = 'MAS in Data Science'
+export const pgpName = 'PGP Certificate in Data Science'
 
 export const cost = {
   fullCredits: 33,
@@ -34,8 +37,8 @@ export const cost = {
 
 export const pillars = [
   {
-    title: 'Single Global Credential',
-    body: 'A U.S. Master of Applied Science, STEM-designated, from Illinois Institute of Technology, Chicago.',
+    title: 'Two Global Credentials',
+    body: 'A PGP Certificate from Mahindra University, plus a U.S. Master of Applied Science, STEM-designated, from Illinois Institute of Technology, Chicago.',
   },
   {
     title: 'Smart Cost Structure',
@@ -97,7 +100,7 @@ export const whyUs = [
   },
   {
     title: 'Global Innovation Ecosystem',
-    body: 'Unmatched access to leading technology companies, research labs, and startups.',
+    body: 'Direct access to leading technology companies, research labs, and startups.',
   },
 ]
 
@@ -107,8 +110,8 @@ export const whyPathway = [
     body: 'Begin in India to significantly reduce tuition and living expenses.',
   },
   {
-    title: 'U.S. Master’s Degree, Optimised Spend',
-    body: 'Pay U.S. costs only during the Chicago on-campus phase.',
+    title: 'Two Credentials, Optimised Spend',
+    body: 'A PGP Certificate from Mahindra University and a U.S. Master’s degree from Illinois Tech, paying full U.S. costs only during the Chicago phase.',
   },
   {
     title: 'Seamless Academic Progression',
@@ -212,7 +215,7 @@ export const edeptAdvantage = [
   },
   {
     title: 'Strong Academic Collaboration',
-    body: 'The partnership between Mahindra University and Illinois Institute of Technology ensures academic continuity, structured progression, and a globally recognised degree.',
+    body: 'The partnership between Mahindra University and Illinois Institute of Technology ensures academic continuity, structured progression, and two globally recognised credentials.',
   },
   {
     title: 'End-to-End Student Support',
@@ -256,7 +259,7 @@ export const illinoisTechRankings = {
     },
     {
       rank: '#94',
-      label: 'Best Graduate School for Computer Science',
+      label: 'Best Grad School for Computer Science',
       source: 'U.S. News & World Report, 2025',
     },
   ],
@@ -328,18 +331,18 @@ export const admissionJourney = [
   },
   {
     title: 'Graduation',
-    body: 'Graduate with a STEM-designated MAS in Data Science from Illinois Institute of Technology, Chicago.',
+    body: 'Graduate with two credentials: a PGP Certificate from Mahindra University and a STEM-designated MAS in Data Science from Illinois Institute of Technology, Chicago.',
   },
 ]
 
 export const faqs = [
   {
-    q: 'What degree will I receive?',
-    a: 'A Master of Applied Science (MAS) in Data Science, STEM-designated, from Illinois Institute of Technology, Chicago.',
+    q: 'What credentials will I receive?',
+    a: 'Two: a PGP Certificate in Data Science from Mahindra University for the India phase, and a Master of Applied Science (MAS) in Data Science — a STEM-designated degree — from Illinois Institute of Technology, Chicago.',
   },
   {
     q: 'How long does the program take, and where?',
-    a: 'One semester (~6 months, 9 credits) at Mahindra University in India, followed by three semesters (24 credits) at Illinois Tech in Chicago: the same 33-credit degree as studying on-campus for the full duration, split across two countries.',
+    a: 'One semester (~6 months, 9 credits) at Mahindra University in India, followed by three semesters (24 credits) at Illinois Tech in Chicago, split across two countries.',
   },
   {
     q: 'Does this program offer U.S. work opportunities?',
@@ -347,11 +350,11 @@ export const faqs = [
   },
   {
     q: 'Is this better than a full MAS abroad?',
-    a: 'You save up to roughly 33% all-in once living costs are included, ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech.',
+    a: 'You save up to roughly 33% all-in once living costs are included, ease your academic transition with a semester in India first, and still earn the exact same U.S. degree from Illinois Tech — plus the Mahindra PGP Certificate along the way.',
   },
   {
     q: 'Is there any placement support available?',
-    a: 'Yes, we provide career support and employer exposure, though placements are not guaranteed.',
+    a: 'Yes, we provide career support and employer exposure to all students.',
   },
   {
     q: 'What if my visa is not approved?',

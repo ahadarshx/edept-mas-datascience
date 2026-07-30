@@ -53,7 +53,7 @@ export function About() {
       <Section className="!pb-10 md:!pb-14">
         <Eyebrow>About the Partnership</Eyebrow>
         <h1 className="mt-3 font-serif tracking-tight text-balance text-4xl md:text-5xl leading-[1.1] text-neutral-900">
-          Two universities. One globally recognised degree.
+          Two universities. Two credentials in one pathway.
         </h1>
       </Section>
 

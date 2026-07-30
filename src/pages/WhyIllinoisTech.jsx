@@ -44,7 +44,7 @@ export function WhyIllinoisTech() {
       </section>
 
       <Section>
-        <SectionHeading eyebrow="Why the United States" title="A global center of gravity for data and AI" />
+        <SectionHeading eyebrow="Why the United States" title="Global Center for Data & AI" />
         <div className="mt-12 grid md:grid-cols-2 gap-x-12 gap-y-10">
           {whyUs.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>

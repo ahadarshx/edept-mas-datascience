@@ -1,19 +1,15 @@
-import { Award } from 'lucide-react'
 import { illinoisTechRankings } from '../data/content'
 import { CountUp } from './CountUp'
+import { GlowOrb } from './GlowOrb'
 import { Reveal } from './Reveal'
 
 const rank = (r) => parseInt(r.replace('#', ''), 10)
 
 export function RankingBand() {
   return (
-    <div className="bg-ink rounded-3xl px-6 py-14 md:py-16">
-      <div className="flex items-center justify-center gap-2 text-savings">
-        <Award size={16} />
-        <p className="font-mono uppercase tracking-widest text-[10px]">Independently Verified Rankings</p>
-      </div>
-
-      <div className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-10 text-center max-w-2xl mx-auto">
+    <div className="relative overflow-hidden bg-ink rounded-3xl px-6 py-14 md:py-16">
+      <GlowOrb className="-top-20 -right-20 h-64 w-64" />
+      <div className="relative grid sm:grid-cols-2 gap-x-8 gap-y-10 text-center max-w-2xl mx-auto">
         {illinoisTechRankings.headline.map((r, i) => (
           <Reveal key={r.label} delay={i * 100}>
             <p className="font-serif text-5xl md:text-6xl tracking-tight text-neutral-50">

@@ -3,6 +3,8 @@ import { Globe, Mail, MessageCircle } from 'lucide-react'
 import { EdeptLogo, PartnerLogo } from './Logo'
 import { nav, contact } from '../data/content'
 
+const whatsappUrl = `https://wa.me/${contact.whatsapp}`
+
 export function Footer() {
   return (
     <footer className="bg-ink text-neutral-400 border-t-[0.5px] border-neutral-800">
@@ -49,9 +51,9 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <Link to="/contact" className="flex items-center gap-2 hover:text-neutral-50 transition-colors">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-neutral-50 transition-colors">
                 <MessageCircle size={14} /> Talk to a Counsellor
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

@@ -9,6 +9,7 @@ import { CountUp } from '../components/CountUp'
 import { Reveal } from '../components/Reveal'
 import { LogoMarquee } from '../components/LogoMarquee'
 import { HeroSavingsCard } from '../components/HeroSavingsCard'
+import { GlowOrb } from '../components/GlowOrb'
 import { pillars, tracks, cost } from '../data/content'
 
 const fmt = (n) => `$${n.toLocaleString('en-US')}`
@@ -41,7 +42,8 @@ export function Home() {
             Master of Applied Science in Data Science
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 leading-relaxed">
-            One semester in India. Three semesters in Chicago. One U.S. STEM degree from Illinois Institute of Technology, at up to {cost.allInSavingPct}% lower all-in cost.
+            One semester in India, three in Chicago — leave with a PGP Certificate and a U.S. STEM degree with OPT from Illinois Institute of Technology, at up to{' '}
+            <span className="font-semibold text-savings">&asymp;{cost.allInSavingPct}% lower all-in cost</span>.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -70,8 +72,8 @@ export function Home() {
       <Section className="!py-10 md:!py-14 border-b-[0.5px] border-neutral-200">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <Badge icon={MapPin} label="6 Months in India" />
-          <Badge icon={TrendingDown} label={`Save ≈${cost.allInSavingPct}% All-In with Living Costs`} />
-          <Badge icon={GraduationCap} label="Earn a U.S. STEM Degree" />
+          <Badge icon={TrendingDown} label={`Save ≈${cost.allInSavingPct}% All-In with Living Costs`} highlight />
+          <Badge icon={GraduationCap} label="2 Credentials, 1 Pathway" />
         </div>
       </Section>
 
@@ -122,7 +124,8 @@ export function Home() {
       </Section>
 
       {/* Bold statement */}
-      <Section className="!py-20 md:!py-28 bg-ink" containerClassName="text-center">
+      <Section className="relative overflow-hidden !py-20 md:!py-28 bg-ink" containerClassName="relative text-center">
+        <GlowOrb className="-bottom-24 left-1/2 h-80 w-80 -translate-x-1/2" />
         <p className="font-serif tracking-tight text-balance text-3xl md:text-5xl leading-[1.15] text-neutral-50">
           Same professors. Same classrooms. <span className="text-savings">Same degree.</span>
           <br />
@@ -139,7 +142,8 @@ export function Home() {
               The same 33-credit degree, {fmt(cost.savingUsd)} lighter.
             </h2>
             <p className="mt-4 text-neutral-600 leading-relaxed max-w-lg">
-              Full program at Illinois Tech: {fmt(cost.fullCost)}. The 1+1 pathway: &asymp;{fmt(cost.pathwayTotal)}. Same degree, same university, up to {cost.allInSavingPct}% lower all-in cost.
+              Full program at Illinois Tech: {fmt(cost.fullCost)}. The 1+1 pathway: &asymp;{fmt(cost.pathwayTotal)}. Same degree, same university, up to{' '}
+              <span className="font-semibold text-savings">&asymp;{cost.allInSavingPct}% lower all-in cost</span>.
             </p>
             <div className="mt-8">
               <Button to="/cost" variant="primary">
@@ -152,7 +156,7 @@ export function Home() {
             <p className="mt-3 font-serif text-5xl md:text-6xl tracking-tight text-neutral-50">
               <CountUp value={cost.savingUsd} prefix="$" />
             </p>
-            <p className="mt-2 text-sm text-neutral-400">up to &asymp;{cost.allInSavingPct}% lower, all-in</p>
+            <p className="mt-2 text-sm font-semibold text-savings">up to &asymp;{cost.allInSavingPct}% lower, all-in</p>
           </div>
         </div>
       </Section>
@@ -186,9 +190,13 @@ export function Home() {
   )
 }
 
-function Badge({ icon: Icon, label }) {
+function Badge({ icon: Icon, label, highlight }) {
   return (
-    <div className="flex items-center justify-center gap-2 text-sm font-medium text-neutral-700 transition-transform duration-300 hover:scale-105">
+    <div
+      className={`flex items-center justify-center gap-2 text-sm font-medium transition-transform duration-300 hover:scale-105 ${
+        highlight ? 'text-savings font-semibold' : 'text-neutral-700'
+      }`}
+    >
       <Icon size={16} className="text-savings" />
       <span>{label}</span>
     </div>

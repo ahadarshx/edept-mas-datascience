@@ -1,9 +1,11 @@
-import { Mail, Globe } from 'lucide-react'
+import { MessageCircle, Mail, Globe } from 'lucide-react'
 import { Section, Eyebrow } from '../components/Section'
 import { Button } from '../components/Button'
+import { BrochureButton } from '../components/BrochureButton'
 import { contact } from '../data/content'
 
 const mailto = `mailto:${contact.email}?subject=${encodeURIComponent('MAS in Data Science: Enquiry')}`
+const whatsappUrl = `https://wa.me/${contact.whatsapp}`
 
 export function Contact() {
   return (
@@ -20,22 +22,19 @@ export function Contact() {
         <Button to="/apply" variant="savings">
           Apply Now
         </Button>
-        <Button href={mailto} variant="outline">
-          <Mail size={16} /> Email {contact.email}
+        <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer" variant="outline">
+          <MessageCircle size={16} /> Chat on WhatsApp
         </Button>
+        <BrochureButton variant="outline" />
       </div>
-      <p className="mt-4 text-sm text-neutral-500">
+      <p className="mt-6 text-sm text-neutral-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <a href={mailto} className="inline-flex items-center gap-1.5 hover:text-accent">
+          <Mail size={13} /> {contact.email}
+        </a>
         <a href={contact.siteUrl} className="inline-flex items-center gap-1.5 hover:text-accent">
           <Globe size={13} /> {contact.site}
         </a>
       </p>
-
-      <div className="mt-16 inline-flex flex-col items-center gap-3">
-        <div className="rounded-xl border-[0.5px] border-neutral-200 p-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105">
-          <img src="images/misc/qr-edept.png" alt={`QR code to ${contact.site}`} width="180" height="180" />
-        </div>
-        <p className="font-mono uppercase tracking-widest text-[10px] text-neutral-500">Scan to Apply</p>
-      </div>
     </Section>
   )
 }

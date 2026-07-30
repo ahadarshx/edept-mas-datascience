@@ -3,7 +3,7 @@ import { Section, Eyebrow } from '../components/Section'
 import { CTASection } from '../components/CTASection'
 import { Reveal } from '../components/Reveal'
 import { CountUp } from '../components/CountUp'
-import { tracks, degreeName } from '../data/content'
+import { tracks } from '../data/content'
 
 const trackImages = {
   india: 'images/mahindra-university/4.jpg',
@@ -13,7 +13,7 @@ const trackImages = {
 const stats = [
   { value: 33, suffix: '', label: 'Total Credits' },
   { value: 2, suffix: '', label: 'Countries' },
-  { value: 1, suffix: '', label: 'U.S. STEM Degree' },
+  { value: 2, suffix: '', label: 'Global Credentials' },
 ]
 
 export function Program() {
@@ -22,12 +22,9 @@ export function Program() {
       <Section className="!pb-10 md:!pb-14">
         <Eyebrow>Curriculum</Eyebrow>
         <h1 className="mt-3 font-serif tracking-tight text-balance text-4xl md:text-5xl leading-[1.1] text-neutral-900">
-          One degree, split across two campuses.
+          Two credentials, one seamless curriculum.
         </h1>
-        <p className="mt-4 max-w-xl text-neutral-600 leading-relaxed">
-          The {degreeName} is a single 33-credit curriculum. Your first 9 credits transfer in fully from Mahindra University, and the remaining 24 are completed on campus at Illinois Institute of Technology, Chicago.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6">
+        <div className="mt-10 grid grid-cols-3 gap-4 sm:flex sm:flex-wrap sm:gap-x-12 sm:gap-y-6">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 80} className="transition-transform duration-300 hover:-translate-y-0.5">
               <p className="font-serif text-4xl tracking-tight text-neutral-900">

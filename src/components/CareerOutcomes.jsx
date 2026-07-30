@@ -32,11 +32,14 @@ export function CareerOutcomes() {
           </p>
         </Reveal>
 
-        <Reveal delay={100} className="mt-8 flex flex-wrap gap-2">
+        <Reveal
+          delay={100}
+          className="mt-8 -mx-6 flex gap-2 overflow-x-auto px-6 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+        >
           <button
             onClick={() => setActive('all')}
             style={{ transitionTimingFunction: SPRING }}
-            className={`rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all duration-300 ${
+            className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all duration-300 ${
               active === 'all' ? 'bg-accent text-white' : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-neutral-200'
             }`}
           >
@@ -47,7 +50,7 @@ export function CareerOutcomes() {
               key={ind.key}
               onClick={() => setActive(ind.key)}
               style={{ transitionTimingFunction: SPRING }}
-              className={`rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all duration-300 ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all duration-300 ${
                 active === ind.key ? 'bg-accent text-white' : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-neutral-200'
               }`}
             >

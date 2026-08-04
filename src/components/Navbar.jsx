@@ -19,7 +19,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b-[0.5px] border-neutral-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href={contact.siteUrl} className="flex items-center gap-2">
-          <EdeptLogo className="h-6" />
+          <EdeptLogo className="h-8" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">

@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { Program } from './pages/Program'
-import { Cost } from './pages/Cost'
 import { Admissions } from './pages/Admissions'
+import { Outcomes } from './pages/Outcomes'
 import { WhyIllinoisTech } from './pages/WhyIllinoisTech'
 import { About } from './pages/About'
 import { Faq } from './pages/Faq'
@@ -27,8 +27,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/program" element={<Program />} />
-          <Route path="/cost" element={<Cost />} />
           <Route path="/admissions" element={<Admissions />} />
+          <Route path="/outcomes" element={<Outcomes />} />
           <Route path="/why-illinois-tech" element={<WhyIllinoisTech />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />

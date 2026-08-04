@@ -1,8 +1,8 @@
 export const nav = [
   { label: 'Home', to: '/' },
   { label: 'Program', to: '/program' },
-  { label: 'Cost & Savings', to: '/cost' },
-  { label: 'Admissions', to: '/admissions' },
+  { label: 'Admissions & Cost', to: '/admissions' },
+  { label: 'Outcomes', to: '/outcomes' },
   { label: 'Why Illinois Tech', to: '/why-illinois-tech' },
   { label: 'About', to: '/about' },
   { label: 'FAQ', to: '/faq' },
@@ -297,6 +297,33 @@ export const mahindraUniversity = {
   ],
   statsSource: 'Source: Mahindra University institutional data, 2025',
 }
+
+// Illinois Tech's own graduate-outcomes numbers (all Masters + Doctorate
+// programs, not Data Science/MAS-specific — that breakout isn't published).
+// Source: Illinois Tech Career Services, First Destination Survey, Class of
+// 2025 (NACE methodology, 90% survey response rate, elevate.iit.edu/graduates-outcomes).
+export const outcomeStats = [
+  { value: '85.6%', label: 'Employed Full-Time Within 6 Months', sub: 'Class of 2025' },
+  { value: '$72,000', label: 'Median Starting Salary', sub: 'Advanced-degree graduates' },
+  { value: '90%', label: 'Survey Response Rate', sub: 'First Destination Survey' },
+  { value: '98.3%', label: 'Employed in the U.S.', sub: 'Post-graduation location' },
+]
+
+export const outcomeEmployers = [
+  'Amazon',
+  'JPMorgan Chase & Co.',
+  'CVS Health',
+  'Tesla',
+  'Webber',
+  'Interlake Mecalux',
+  'Dragados USA',
+  'Ferrovial Construction US Corp.',
+  'IDOM, Inc.',
+  'Handshake',
+]
+
+export const outcomesSource =
+  'Source: Illinois Institute of Technology Career Services, First Destination Survey, Class of 2025 (NACE methodology). Figures cover all Illinois Tech graduate (Masters + Doctorate) programs, not Data Science/MAS specifically.'
 
 export const admissionCriteria = [
   'Bachelor’s degree in Engineering, Computer Science, Mathematics, Statistics, or a related field',

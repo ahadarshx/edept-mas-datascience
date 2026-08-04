@@ -134,7 +134,7 @@ export function Home() {
               <Highlight>&asymp;{cost.allInSavingPct}% lower</Highlight> all-in cost.
             </p>
             <div className="mt-8">
-              <Button to="/cost" variant="primary">
+              <Button to="/admissions" variant="primary">
                 See the Full Breakdown <ArrowRight size={15} className="ml-1" />
               </Button>
             </div>

@@ -3,6 +3,7 @@ import { Section, Eyebrow } from '../components/Section'
 import { Timeline } from '../components/Timeline'
 import { CTASection } from '../components/CTASection'
 import { IntakeCard } from '../components/IntakeCard'
+import { CostComparison } from '../components/CostComparison'
 import { Reveal } from '../components/Reveal'
 import { admissionCriteria, admissionJourney } from '../data/content'
 
@@ -49,6 +50,21 @@ export function Admissions() {
         </div>
 
         <Timeline steps={admissionJourney} icons={journeyIcons} />
+      </Section>
+
+      <Section className="bg-white" id="cost">
+        <div className="text-center">
+          <Eyebrow>Tuition &amp; Estimated Costs</Eyebrow>
+          <h2 className="mt-3 mx-auto max-w-2xl font-serif tracking-tight text-balance text-3xl md:text-4xl leading-[1.1] text-neutral-900">
+            Same degree, real savings.
+          </h2>
+          <p className="mt-4 mx-auto max-w-xl text-neutral-600 leading-relaxed">
+            Here&rsquo;s exactly what the full Illinois Tech program costs, and what you&rsquo;d pay instead on the 1+1 pathway.
+          </p>
+        </div>
+        <div className="mt-14">
+          <CostComparison />
+        </div>
       </Section>
 
       <CTASection />

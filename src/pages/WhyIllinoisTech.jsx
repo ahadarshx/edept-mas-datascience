@@ -85,7 +85,7 @@ export function WhyIllinoisTech() {
           heading={
             <SectionHeading
               eyebrow="Why Chicago"
-              title="Illinois combines career opportunity, applied learning, and student-friendly living"
+              title="Career opportunity, applied learning, student-friendly living"
               body="Making it an ideal location for building a future-ready data science career."
             />
           }

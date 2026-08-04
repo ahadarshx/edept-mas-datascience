@@ -86,12 +86,21 @@ export function WhyIllinoisTech() {
           title="Illinois combines career opportunity, applied learning, and student-friendly living"
           body="Making it an ideal location for building a future-ready data science career."
         />
-        <div className="mt-12 grid md:grid-cols-2 gap-x-12 gap-y-10">
-          {whyIllinois.map((p, i) => (
-            <Reveal key={p.title} delay={i * 80}>
-              <PointCard title={p.title} body={p.body} icon={whyIllinoisIcons[i]} />
-            </Reveal>
-          ))}
+        <div className="mt-12 mx-auto max-w-3xl divide-y-[0.5px] divide-neutral-200 border-y-[0.5px] border-neutral-200">
+          {whyIllinois.map((p, i) => {
+            const Icon = whyIllinoisIcons[i]
+            return (
+              <Reveal key={p.title} delay={i * 70} className="group flex items-start gap-5 py-6 transition-colors duration-300 hover:bg-neutral-50/60">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-muted/40 text-accent transition-transform duration-300 group-hover:scale-110">
+                  <Icon size={18} strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3 className="font-serif text-lg tracking-tight text-neutral-900">{p.title}</h3>
+                  <p className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{p.body}</p>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </Section>
 

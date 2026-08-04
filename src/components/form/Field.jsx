@@ -135,10 +135,10 @@ export function ToolsExperienceField({ label, required, span, values = {} }) {
   return (
     <div className={`flex flex-col gap-2 ${span === 2 ? 'sm:col-span-2' : ''}`}>
       <LabelText label={label} required={required} />
-      <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {TOOL_OPTIONS.map((t) => (
           <div key={t.key} className="flex flex-wrap items-center gap-3 rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5">
-            <label className="flex min-w-[130px] items-center gap-2 text-sm text-neutral-700">
+            <label className="flex min-w-[100px] items-center gap-2 text-sm text-neutral-700">
               <input type="checkbox" name={`tool_${t.key}`} defaultChecked={checked[t.key]} onChange={toggle(t.key)} className="accent-[#12539f]" />
               {t.label}
             </label>
@@ -149,7 +149,7 @@ export function ToolsExperienceField({ label, required, span, values = {} }) {
                 required
                 className="ml-auto rounded-md border-[0.5px] border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900"
               >
-                <option value="">Years of experience&hellip;</option>
+                <option value="">Years&hellip;</option>
                 {EXPERIENCE_OPTIONS.map((o) => (
                   <option key={o} value={o}>
                     {o}
@@ -159,7 +159,7 @@ export function ToolsExperienceField({ label, required, span, values = {} }) {
             )}
           </div>
         ))}
-        <div className="flex flex-wrap items-center gap-3 rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5">
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5 sm:col-span-2">
           <label className="flex items-center gap-2 text-sm text-neutral-700">
             <input type="checkbox" defaultChecked={checked.other} onChange={toggle('other')} className="accent-[#12539f]" />
             Other

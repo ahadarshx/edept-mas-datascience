@@ -2,8 +2,8 @@ export const nav = [
   { label: 'Home', to: '/' },
   { label: 'Program', to: '/program' },
   { label: 'Admissions & Cost', to: '/admissions' },
-  { label: 'Outcomes', to: '/outcomes' },
   { label: 'Why Illinois Tech', to: '/why-illinois-tech' },
+  { label: 'Outcomes', to: '/outcomes' },
   { label: 'About', to: '/about' },
   { label: 'FAQ', to: '/faq' },
 ]

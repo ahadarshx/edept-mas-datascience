@@ -1,6 +1,5 @@
 import {
   TrendingUp,
-  DollarSign,
   GraduationCap,
   Globe,
   Wallet,
@@ -18,10 +17,11 @@ import {
 import { Section, Eyebrow, SectionHeading } from '../components/Section'
 import { PointCard } from '../components/Card'
 import { CTASection } from '../components/CTASection'
+import { ChicagoStory } from '../components/ChicagoStory'
 import { Reveal } from '../components/Reveal'
 import { whyUs, whyPathway, whyIllinois } from '../data/content'
 
-const whyUsIcons = [TrendingUp, DollarSign, GraduationCap, Globe]
+const whyUsIcons = [TrendingUp, GraduationCap, Globe]
 const whyPathwayIcons = [Wallet, PiggyBank, ArrowRightLeft, Plane, Rocket, BadgeCheck]
 const whyIllinoisIcons = [Briefcase, Factory, Library, HandCoins, Target]
 
@@ -45,7 +45,7 @@ export function WhyIllinoisTech() {
 
       <Section>
         <SectionHeading eyebrow="Why the United States" title="Global Center for Data & AI" />
-        <div className="mt-12 grid md:grid-cols-2 gap-x-12 gap-y-10">
+        <div className="mt-12 grid md:grid-cols-3 gap-x-10 gap-y-10">
           {whyUs.map((p, i) => (
             <Reveal key={p.title} delay={i * 80}>
               <PointCard title={p.title} body={p.body} icon={whyUsIcons[i]} />
@@ -81,27 +81,17 @@ export function WhyIllinoisTech() {
       </Reveal>
 
       <Section>
-        <SectionHeading
-          eyebrow="Why Chicago"
-          title="Illinois combines career opportunity, applied learning, and student-friendly living"
-          body="Making it an ideal location for building a future-ready data science career."
+        <ChicagoStory
+          heading={
+            <SectionHeading
+              eyebrow="Why Chicago"
+              title="Illinois combines career opportunity, applied learning, and student-friendly living"
+              body="Making it an ideal location for building a future-ready data science career."
+            />
+          }
+          points={whyIllinois}
+          icons={whyIllinoisIcons}
         />
-        <div className="mt-12 mx-auto max-w-3xl divide-y-[0.5px] divide-neutral-200 border-y-[0.5px] border-neutral-200">
-          {whyIllinois.map((p, i) => {
-            const Icon = whyIllinoisIcons[i]
-            return (
-              <Reveal key={p.title} delay={i * 70} className="group flex items-start gap-5 py-6 transition-colors duration-300 hover:bg-neutral-50/60">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-muted/40 text-accent transition-transform duration-300 group-hover:scale-110">
-                  <Icon size={18} strokeWidth={1.75} />
-                </span>
-                <div>
-                  <h3 className="font-serif text-lg tracking-tight text-neutral-900">{p.title}</h3>
-                  <p className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{p.body}</p>
-                </div>
-              </Reveal>
-            )
-          })}
-        </div>
       </Section>
 
       <CTASection />

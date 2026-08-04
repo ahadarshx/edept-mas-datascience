@@ -87,12 +87,8 @@ export const tracks = [
 
 export const whyUs = [
   {
-    title: 'Strong Demand for Data & AI Talent',
-    body: 'U.S. employers across industries continue to hire data scientists, AI engineers, and analytics professionals at scale.',
-  },
-  {
-    title: 'High Career & Salary Potential',
-    body: 'Data and AI roles in the U.S. offer strong starting salaries and sustained long-term career growth.',
+    title: 'Strong Demand & High Earning Potential',
+    body: 'U.S. employers across industries continue to hire data scientists, AI engineers, and analytics professionals at scale, with strong starting salaries and sustained long-term career growth.',
   },
   {
     title: 'STEM Advantage for Intl. Students',

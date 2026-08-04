@@ -1,5 +1,4 @@
 import { FieldGrid, TextField, RadioGroup, CheckGroup } from '../../components/form/Field'
-import { contact } from '../../data/content'
 
 const DECLARATIONS = [
   'All information provided in this application is true, accurate, and complete to the best of my knowledge.',
@@ -34,8 +33,9 @@ export function DeclarationStep({ values = {} }) {
           required
           defaultValue={values.intake}
           options={[
-            { value: 'fall-2026', label: contact.intake },
-            { value: 'future', label: 'Notify me of future intakes' },
+            { value: 'spring-2027', label: 'Spring 2027 (January)' },
+            { value: 'fall-2027', label: 'Fall 2027 (August / September)' },
+            { value: 'spring-2028', label: 'Spring 2028 (January)' },
           ]}
         />
         <CheckGroup

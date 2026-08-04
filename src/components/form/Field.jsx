@@ -1,5 +1,5 @@
 import { Upload } from 'lucide-react'
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 
 const inputClass =
   'w-full rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors duration-200 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent-muted/60'
@@ -29,15 +29,18 @@ export function TextField({ label, required, hint, span, helper, defaultValue, c
   )
 }
 
-export function TextareaField({ label, required, hint, span, helper, rows = 4, defaultValue, className = '', ...props }) {
+export const TextareaField = forwardRef(function TextareaField(
+  { label, required, hint, span, helper, rows = 4, defaultValue, className = '', ...props },
+  ref,
+) {
   return (
     <label className={`flex flex-col gap-1.5 ${span === 2 ? 'sm:col-span-2' : span === 3 ? 'sm:col-span-3' : ''} ${className}`}>
       <LabelText label={label} required={required} hint={hint} />
-      <textarea className={`${inputClass} resize-y`} rows={rows} defaultValue={defaultValue} required={required} {...props} />
+      <textarea ref={ref} className={`${inputClass} resize-y`} rows={rows} defaultValue={defaultValue} required={required} {...props} />
       {helper && <span className="text-xs text-neutral-500">{helper}</span>}
     </label>
   )
-}
+})
 
 export function SelectField({ label, required, hint, span, helper, options, defaultValue, className = '', ...props }) {
   return (
@@ -101,6 +104,92 @@ export function CheckGroup({ label, name, options, span, className = '' }) {
             {o}
           </label>
         ))}
+      </div>
+    </div>
+  )
+}
+
+const TOOL_OPTIONS = [
+  { key: 'r', label: 'R' },
+  { key: 'python', label: 'Python' },
+  { key: 'cpp_java', label: 'C++ / Java' },
+  { key: 'sql', label: 'SQL' },
+]
+
+const EXPERIENCE_OPTIONS = ['<1 year', '1–2 years', '2–4 years', '4+ years']
+
+// One checkbox per tool, each revealing its own years-of-experience select
+// once checked, plus a free-text "Other" row for anything not listed.
+export function ToolsExperienceField({ label, required, span, values = {} }) {
+  const [checked, setChecked] = useState(() => {
+    const init = {}
+    TOOL_OPTIONS.forEach((t) => {
+      init[t.key] = Boolean(values[`tool_${t.key}`])
+    })
+    init.other = Boolean(values.tool_other_name)
+    return init
+  })
+
+  const toggle = (key) => (e) => setChecked((c) => ({ ...c, [key]: e.target.checked }))
+
+  return (
+    <div className={`flex flex-col gap-2 ${span === 2 ? 'sm:col-span-2' : ''}`}>
+      <LabelText label={label} required={required} />
+      <div className="flex flex-col gap-2">
+        {TOOL_OPTIONS.map((t) => (
+          <div key={t.key} className="flex flex-wrap items-center gap-3 rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5">
+            <label className="flex min-w-[130px] items-center gap-2 text-sm text-neutral-700">
+              <input type="checkbox" name={`tool_${t.key}`} defaultChecked={checked[t.key]} onChange={toggle(t.key)} className="accent-[#12539f]" />
+              {t.label}
+            </label>
+            {checked[t.key] && (
+              <select
+                name={`tool_${t.key}_years`}
+                defaultValue={values[`tool_${t.key}_years`] || ''}
+                required
+                className="ml-auto rounded-md border-[0.5px] border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900"
+              >
+                <option value="">Years of experience&hellip;</option>
+                {EXPERIENCE_OPTIONS.map((o) => (
+                  <option key={o} value={o}>
+                    {o}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+        ))}
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border-[0.5px] border-neutral-300 bg-white px-4 py-2.5">
+          <label className="flex items-center gap-2 text-sm text-neutral-700">
+            <input type="checkbox" defaultChecked={checked.other} onChange={toggle('other')} className="accent-[#12539f]" />
+            Other
+          </label>
+          {checked.other && (
+            <>
+              <input
+                type="text"
+                name="tool_other_name"
+                defaultValue={values.tool_other_name}
+                required
+                placeholder="Name the tool"
+                className="min-w-[130px] flex-1 rounded-md border-[0.5px] border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 placeholder:text-neutral-400"
+              />
+              <select
+                name="tool_other_years"
+                defaultValue={values.tool_other_years || ''}
+                required
+                className="rounded-md border-[0.5px] border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900"
+              >
+                <option value="">Years&hellip;</option>
+                {EXPERIENCE_OPTIONS.map((o) => (
+                  <option key={o} value={o}>
+                    {o}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

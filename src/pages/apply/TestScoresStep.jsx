@@ -11,7 +11,7 @@ export function TestScoresStep({ values = {} }) {
     <>
       <SubHeading>English Proficiency Test *</SubHeading>
       <WarningBanner title="Required for Illinois Tech (Phase II)">
-        Applicants whose undergraduate instruction was not exclusively in English must submit a valid score. Scores must be dated within 2 years of application. Submit ONE test score minimum.
+        Scores must be dated within 2 years of application. Submit ONE test score minimum.
       </WarningBanner>
 
       <div className="mt-4 overflow-x-auto rounded-xl border-[0.5px] border-neutral-200">
@@ -54,9 +54,7 @@ export function TestScoresStep({ values = {} }) {
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-xs text-neutral-500">
-        Fill only the row applicable. Leave others blank. If English was the exclusive medium of instruction, indicate that in Section 2 and attach a medium-of-instruction certificate.
-      </p>
+      <p className="mt-2 text-xs text-neutral-500">Fill only the row applicable. Leave others blank.</p>
 
       <FieldGrid className="mt-5">
         <TextField name="test_registration_id" label="Registration / Candidate ID" defaultValue={values.test_registration_id} placeholder="Test registration number" />

@@ -17,7 +17,7 @@ const STEPS = [
   { key: 'testScores', label: 'Test Scores', title: 'Test Scores', subtitle: 'English proficiency required for Illinois Tech · GRE optional', Component: TestScoresStep },
   { key: 'financial', label: 'Financial Plan', title: 'Financial Plan & Funding Capability', subtitle: 'Both institutions require evidence of ability to fund education and living costs', Component: FinancialStep },
   { key: 'essays', label: 'Statement & Essays', title: 'Statement of Purpose & Short Essays', subtitle: 'Help both admissions committees understand your goals and fit for this program', Component: EssaysStep },
-  { key: 'recommendations', label: 'Recommendations', title: 'Letters of Recommendation', subtitle: '1 Faculty · 1 Academic or Professional', Component: RecommendationsStep },
+  { key: 'recommendations', label: 'Recommendations', title: 'Letters of Recommendation', subtitle: 'Optional · 1 Faculty · 1 Academic or Professional', Component: RecommendationsStep },
   { key: 'documents', label: 'Documents', title: 'Document Checklist & Uploads', subtitle: 'PDF or high-resolution image · Max 5 MB per file', Component: DocumentsStep },
   { key: 'declaration', label: 'Declaration', title: 'Declaration & Certification', subtitle: 'Please read carefully before submitting', Component: DeclarationStep },
 ]

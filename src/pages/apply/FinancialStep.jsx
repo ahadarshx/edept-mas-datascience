@@ -1,4 +1,5 @@
 import { FieldGrid, TextField, SelectField, TextareaField, RadioGroup, InfoBanner, WarningBanner } from '../../components/form/Field'
+import { cost } from '../../data/content'
 
 function PhaseCard({ badge, badgeClass, title, children }) {
   return (
@@ -77,8 +78,13 @@ export function FinancialStep({ values = {} }) {
           Illinois Tech requires a Financial Affidavit of Support for I-20 issuance. Funds must be liquid, available in USD, and sufficient for at least one academic year. Documents must be dated within 6 months of program start.
         </WarningBanner>
         <FieldGrid>
-          <TextField name="us_tuition" label="Estimated Annual Tuition (USD)" required defaultValue={values.us_tuition} placeholder="e.g. $25,000" />
-          <TextField name="us_living_cost" label="Estimated Annual Living Cost (USD)" defaultValue={values.us_living_cost} placeholder="e.g. $18,000 (Chicago)" />
+          <div className="flex flex-col gap-1.5">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-widest text-neutral-600">Estimated Tuition (USD)</span>
+            <div className="w-full rounded-lg border-[0.5px] border-neutral-200 bg-neutral-50 px-4 py-2.5 text-sm text-neutral-700">
+              ${cost.usPortionCost.toLocaleString('en-US')}
+            </div>
+            <span className="text-xs text-neutral-500">Fixed program rate for the full Illinois Tech phase (24 credits).</span>
+          </div>
           <SelectField
             name="us_funding_source"
             label="Primary Funding Source for USA"
@@ -92,37 +98,6 @@ export function FinancialStep({ values = {} }) {
               'Government scholarship (e.g. ICCR)',
               'Illinois Tech scholarship / assistantship',
               'Combination of sources',
-            ]}
-          />
-          <TextField name="us_sponsor_name" label="Sponsor Name for US Phase" defaultValue={values.us_sponsor_name} placeholder="Name of financial sponsor" />
-          <TextField name="us_total_funds" label="Total Funds Available / Committed (USD equivalent)" required defaultValue={values.us_total_funds} placeholder="e.g. $50,000" />
-          <SelectField name="us_funds_currency" label="Currency of Funds" defaultValue={values.us_funds_currency} options={['USD', 'INR (to be converted)', 'Mixed']} />
-          <TextareaField
-            span={2}
-            name="us_funding_plan"
-            label="Describe Your Plan to Fund the US Phase"
-            required
-            defaultValue={values.us_funding_plan}
-            placeholder="Provide a clear plan: e.g. family savings of INR 40L + USD 10K in NRE account + SBI education loan of INR 30L sanctioned. How will you cover tuition and living costs year by year?"
-          />
-          <TextareaField
-            span={2}
-            rows={3}
-            name="us_loan_details"
-            label="International Education Loan Details"
-            hint="(if applicable)"
-            defaultValue={values.us_loan_details}
-            placeholder="Lender name, loan amount, sanction status, repayment plan..."
-          />
-          <RadioGroup
-            span={2}
-            name="scholarship_applied"
-            label="Illinois Tech Scholarship / Assistantship Applied For?"
-            defaultValue={values.scholarship_applied}
-            options={[
-              { value: 'yes', label: 'Yes' },
-              { value: 'no', label: 'No' },
-              { value: 'will', label: 'Will apply upon admission' },
             ]}
           />
         </FieldGrid>

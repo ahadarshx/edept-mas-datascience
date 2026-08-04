@@ -1,4 +1,4 @@
-import { FieldGrid, TextField, SelectField, TextareaField, SubHeading, InfoBanner } from '../../components/form/Field'
+import { FieldGrid, TextField, SelectField, TextareaField, ToolsExperienceField, SubHeading, InfoBanner } from '../../components/form/Field'
 
 export function AcademicStep({ values = {} }) {
   return (
@@ -69,13 +69,7 @@ export function AcademicStep({ values = {} }) {
           defaultValue={values.relevant_courses}
           placeholder="List relevant courses, e.g.: Data Structures, Linear Algebra, Probability &amp; Statistics, Database Systems, Machine Learning, Python Programming..."
         />
-        <TextField name="programming_tools" label="Programming Languages / Tools" required defaultValue={values.programming_tools} placeholder="e.g. Python, SQL, R, MATLAB, TensorFlow" />
-        <SelectField
-          name="programming_experience"
-          label="Years of Programming Experience"
-          defaultValue={values.programming_experience}
-          options={['Less than 1 year', '1–2 years', '2–4 years', '4+ years']}
-        />
+        <ToolsExperienceField label="Programming Languages / Tools" required span={2} values={values} />
       </FieldGrid>
 
       <SubHeading hint="(if any)">Work Experience</SubHeading>

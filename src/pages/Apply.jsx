@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { Section, Eyebrow } from '../components/Section'
 import { Button } from '../components/Button'
+import { AuthModal } from '../components/AuthModal'
 import { PersonalStep } from './apply/PersonalStep'
 import { AcademicStep } from './apply/AcademicStep'
 import { TestScoresStep } from './apply/TestScoresStep'
@@ -10,6 +11,32 @@ import { EssaysStep } from './apply/EssaysStep'
 import { RecommendationsStep } from './apply/RecommendationsStep'
 import { DocumentsStep } from './apply/DocumentsStep'
 import { DeclarationStep } from './apply/DeclarationStep'
+
+// Interim, frontend-only "save progress" persistence — everything lives in
+// this browser's localStorage, keyed by the verified email, until the real
+// backend (auth + application storage) exists. TODO(backend): once that
+// exists, swap loadProgress/saveProgress for real API calls keyed off the
+// token AuthModal's onLogin will eventually receive, instead of the bare
+// email used here as a stand-in identifier.
+const SESSION_KEY = 'mas_apply_session_email'
+const progressKey = (email) => `mas_apply_progress_${email.toLowerCase()}`
+
+function loadProgress(email) {
+  try {
+    const raw = localStorage.getItem(progressKey(email))
+    return raw ? JSON.parse(raw) : null
+  } catch {
+    return null
+  }
+}
+
+function saveProgress(email, data) {
+  try {
+    localStorage.setItem(progressKey(email), JSON.stringify(data))
+  } catch {
+    // localStorage unavailable (private browsing, full quota) — not critical, skip silently.
+  }
+}
 
 const STEPS = [
   { key: 'personal', label: 'Personal Info', title: 'Personal Information', subtitle: 'As it appears on your passport / government-issued ID', Component: PersonalStep },
@@ -34,9 +61,52 @@ function formDataToObject(formData) {
 }
 
 export function Apply() {
-  const [stepIndex, setStepIndex] = useState(0)
-  const [data, setData] = useState({})
+  // Session and any saved progress for it are restored synchronously via
+  // these lazy initializers (not a useEffect) — that way `data`/`stepIndex`
+  // are correct from the very first render, and the auto-save effect below
+  // never runs even once with stale/empty data that would overwrite the
+  // saved copy it's meant to be resuming.
+  const [session, setSession] = useState(() => {
+    try {
+      return localStorage.getItem(SESSION_KEY)
+    } catch {
+      return null
+    }
+  })
+  const [data, setData] = useState(() => (session && loadProgress(session)) || {})
+  const [stepIndex, setStepIndex] = useState(() => {
+    const saved = session && loadProgress(session)
+    return saved ? Math.min(Object.keys(saved).length, STEPS.length - 1) : 0
+  })
   const [submitted, setSubmitted] = useState(false)
+
+  // Keep the saved copy in sync with every completed step, for as long as someone's signed in.
+  useEffect(() => {
+    if (session) saveProgress(session, data)
+  }, [session, data])
+
+  function handleLogin(email) {
+    setSession(email)
+    try {
+      localStorage.setItem(SESSION_KEY, email)
+    } catch {
+      // localStorage unavailable — session still works for this page load, just won't persist a reload.
+    }
+    const saved = loadProgress(email)
+    if (saved) {
+      setData(saved)
+      setStepIndex(Math.min(Object.keys(saved).length, STEPS.length - 1))
+    }
+  }
+
+  function handleLogout() {
+    setSession(null)
+    try {
+      localStorage.removeItem(SESSION_KEY)
+    } catch {
+      // ignore
+    }
+  }
 
   const step = STEPS[stepIndex]
   const isLast = stepIndex === STEPS.length - 1
@@ -49,6 +119,13 @@ export function Apply() {
 
     if (isLast) {
       // TODO: POST `next` to the CRM intake endpoint once it's provided.
+      if (session) {
+        try {
+          localStorage.removeItem(progressKey(session))
+        } catch {
+          // ignore
+        }
+      }
       setSubmitted(true)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
@@ -91,6 +168,9 @@ export function Apply() {
         <p className="mt-4 max-w-xl text-neutral-600 leading-relaxed">
           Mahindra University → Illinois Institute of Technology, Chicago. Complete all 8 sections below; you can move back and forth freely before submitting.
         </p>
+        <div className="mt-6">
+          <AuthModal session={session} onLogin={handleLogin} onLogout={handleLogout} />
+        </div>
       </Section>
 
       <Section className="!pt-0">

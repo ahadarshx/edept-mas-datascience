@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { MapPin, TrendingDown, GraduationCap, Wallet, LifeBuoy, ArrowRight } from 'lucide-react'
 import { Button } from '../components/Button'
 import { Section, Eyebrow, SectionHeading } from '../components/Section'
@@ -21,11 +22,18 @@ const pillarIcons = [GraduationCap, Wallet, LifeBuoy]
 
 const galleryImages = [
   { src: 'images/illinois-tech/12.jpg', alt: 'Illinois Institute of Technology campus life' },
-  { src: 'images/mahindra-university/3.jpg', alt: 'Mahindra University students in a lab session' },
-  { src: 'images/chicago/business-district.jpg', alt: 'Chicago skyline at dusk' },
-  { src: 'images/mahindra-university/5.jpg', alt: 'Mahindra University campus recreation' },
+  { src: 'images/illinois-tech/21.jpg', alt: 'Illinois Institute of Technology students on campus' },
   { src: 'images/illinois-tech/7.jpg', alt: 'Illinois Institute of Technology campus life' },
-  { src: 'images/chicago/transit.jpg', alt: 'Chicago "L" train with the downtown skyline behind it' },
+  { src: 'images/illinois-tech/22.jpg', alt: 'Illinois Institute of Technology students on campus' },
+]
+
+const campusGalleryImages = [
+  { src: 'images/illinois-tech/13.jpg', alt: 'Illinois Institute of Technology campus architecture' },
+  { src: 'images/illinois-tech/14.jpg', alt: 'Illinois Institute of Technology campus life' },
+  { src: 'images/illinois-tech/20.jpg', alt: 'Illinois Institute of Technology students on campus' },
+  { src: 'images/illinois-tech/21.jpg', alt: 'Illinois Institute of Technology students on campus' },
+  { src: 'images/illinois-tech/23.jpg', alt: 'Illinois Institute of Technology students on campus' },
+  { src: 'images/illinois-tech/24.jpg', alt: 'Illinois Institute of Technology students on campus' },
 ]
 
 export function Home() {
@@ -113,6 +121,8 @@ export function Home() {
         </div>
       </Section>
 
+      <CampusGallery />
+
       {/* Bold statement */}
       <Section className="relative overflow-hidden !py-20 md:!py-28 bg-ink" containerClassName="relative text-center">
         <GlowOrb className="-bottom-24 left-1/2 h-80 w-80 -translate-x-1/2" />
@@ -164,20 +174,82 @@ export function Home() {
         <LogoMarquee />
       </Reveal>
 
-      {/* Mixed-campus gallery */}
-      <Reveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
+      {/* Illinois Tech campus gallery */}
+      <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-1">
         {galleryImages.map((img) => (
           <div key={img.src} className="group overflow-hidden aspect-square">
             <img
               src={img.src}
               alt={img.alt}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-1"
+              className={`h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-1 ${img.src.endsWith('/22.jpg') ? 'object-[85%_center]' : ''}`}
             />
           </div>
         ))}
       </Reveal>
 
       <CTASection />
+    </>
+  )
+}
+
+function CampusGallery() {
+  const sectionRef = useRef(null)
+  const viewportRef = useRef(null)
+  const trackRef = useRef(null)
+  const [offset, setOffset] = useState(0)
+
+  useEffect(() => {
+    let frame
+    const update = () => {
+      frame = 0
+      const section = sectionRef.current
+      const viewport = viewportRef.current
+      const track = trackRef.current
+      if (!section || !viewport || !track) return
+      const distance = section.offsetHeight - window.innerHeight
+      const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance))
+      setOffset(progress * (track.scrollWidth - viewport.clientWidth))
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  return (
+    <>
+      <section ref={sectionRef} data-testid="campus-scroll-gallery" className="hidden h-[400vh] md:block">
+        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-16">
+          <div className="mx-auto mb-8 w-full max-w-6xl px-6">
+            <Eyebrow>Life at Illinois Tech</Eyebrow>
+            <p className="mt-3 max-w-md font-serif text-3xl tracking-tight text-neutral-900">Your next classroom is Chicago.</p>
+          </div>
+          <div ref={viewportRef} className="overflow-hidden">
+            <div ref={trackRef} className="flex gap-4 px-6 will-change-transform" style={{ transform: `translate3d(-${offset}px, 0, 0)` }}>
+              {campusGalleryImages.map((img) => (
+                <figure key={img.src} className="h-[55vh] w-[68vw] max-w-4xl shrink-0 overflow-hidden rounded-2xl">
+                  <img src={img.src} alt={img.alt} className={`h-full w-full object-cover ${img.src.endsWith('/24.jpg') ? 'object-[center_20%]' : ''}`} />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 md:hidden">
+        <div className="px-6"><Eyebrow>Life at Illinois Tech</Eyebrow></div>
+        <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
+          {campusGalleryImages.map((img) => (
+            <img key={img.src} src={img.src} alt={img.alt} className="h-72 w-[82vw] shrink-0 snap-center rounded-2xl object-cover" />
+          ))}
+        </div>
+      </section>
     </>
   )
 }

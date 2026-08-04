@@ -38,21 +38,29 @@ export function ChicagoStory({ heading, points, icons }) {
           while sticky, with a shorter photo. Right column keeps only the
           in-focus point at full opacity as you scroll, the rest dimmed. */}
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16">
-        <div className="md:sticky md:top-24 md:flex md:min-h-[calc(100vh-6rem)] md:flex-col md:justify-center">
-          {heading}
-          <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl">
-            {IMAGES.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt=""
-                aria-hidden="true"
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  active === i ? 'opacity-100' : 'opacity-0'
-                }`}
-              />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+        {/* Outer cell: no explicit height — CSS grid's default stretch makes
+            it match the tall right column, giving the sticky element below
+            room to stay stuck for the whole scroll. */}
+        <div>
+          {/* Inner: a *fixed* (not stretched) viewport-relative height, so
+              content centered inside it lands in the middle of the screen,
+              not the middle of the tall stretched cell above. */}
+          <div className="md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:flex-col md:justify-center">
+            {heading}
+            <div className="relative mt-10 aspect-[2/1] overflow-hidden rounded-2xl">
+              {IMAGES.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt=""
+                  aria-hidden="true"
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    active === i ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+            </div>
           </div>
         </div>
 
@@ -61,7 +69,7 @@ export function ChicagoStory({ heading, points, icons }) {
             const Icon = icons[i]
             const isActive = active === i
             return (
-              <div key={p.title} ref={(el) => (refs.current[i] = el)} className="flex min-h-[40vh] flex-col justify-center">
+              <div key={p.title} ref={(el) => (refs.current[i] = el)} className="flex min-h-[calc(100vh-6rem)] flex-col justify-center">
                 <div className={`transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-30'}`}>
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-muted/40 text-accent">
                     <Icon size={18} strokeWidth={1.75} />

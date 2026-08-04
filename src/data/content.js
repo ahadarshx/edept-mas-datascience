@@ -336,7 +336,7 @@ export const outcomesSource =
 export const admissionCriteria = [
   'Bachelor’s degree in Engineering, Computer Science, Mathematics, Statistics, or a related field',
   'Strong quantitative background',
-  'Programming knowledge (Python / C++ / Java)',
+  'Programming exposure (Python / C++ / Java) preferred, not required — free training is provided in these tools and for IELTS prep',
 ]
 
 export const admissionJourney = [

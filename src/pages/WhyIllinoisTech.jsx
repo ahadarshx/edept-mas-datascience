@@ -80,19 +80,25 @@ export function WhyIllinoisTech() {
         )}
       </Reveal>
 
-      <Section>
-        <ChicagoStory
-          heading={
-            <SectionHeading
-              eyebrow="Why Chicago"
-              title="Career opportunity, applied learning, student-friendly living"
-              body="Making it an ideal location for building a future-ready data science career."
-            />
-          }
-          points={whyIllinois}
-          icons={whyIllinoisIcons}
-        />
-      </Section>
+      {/* Plain section (not <Section>) on purpose: <Section>'s scroll-reveal
+          wrapper applies a CSS transform once visible, and any transform on
+          an ancestor breaks position:sticky for descendants — it would stop
+          tracking the viewport and instead track that transformed box. */}
+      <section className="py-16 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <ChicagoStory
+            heading={
+              <SectionHeading
+                eyebrow="Why Chicago"
+                title="Career opportunity, applied learning, student-friendly living"
+                body="Making it an ideal location for building a future-ready data science career."
+              />
+            }
+            points={whyIllinois}
+            icons={whyIllinoisIcons}
+          />
+        </div>
+      </section>
 
       <CTASection />
     </>

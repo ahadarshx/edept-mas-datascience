@@ -3,7 +3,7 @@ import { Section, Eyebrow, SectionHeading } from '../components/Section'
 import { StatBand } from '../components/StatBand'
 import { CTASection } from '../components/CTASection'
 import { Reveal } from '../components/Reveal'
-import { outcomeStats, outcomeEmployers, outcomesSource } from '../data/content'
+import { outcomeStats, outcomeEmployerLogos, outcomeEmployersNoLogo, outcomesSource } from '../data/content'
 
 const statIcons = [Briefcase, DollarSign, ClipboardCheck, Globe2]
 
@@ -30,14 +30,27 @@ export function Outcomes() {
 
       <StatBand items={outcomeStats.map((s, i) => ({ ...s, icon: statIcons[i] }))} source={outcomesSource} />
 
-      <Section>
+      <Section containerClassName="text-center">
         <SectionHeading
+          className="mx-auto"
           eyebrow="Where Graduates Land"
           title="A Track Record Across Companies of Every Size"
           body="Illinois Tech graduates go on to start-ups, early-stage companies, and Fortune 500 corporations alike."
         />
-        <Reveal className="mt-10 flex flex-wrap gap-3">
-          {outcomeEmployers.map((name) => (
+        <Reveal className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {outcomeEmployerLogos.map((logo) => (
+            <div key={logo.name} className="flex h-12 w-28 shrink-0 items-center justify-center" title={logo.name}>
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="max-h-9 max-w-full object-contain grayscale transition-[filter] duration-300 hover:grayscale-0"
+              />
+            </div>
+          ))}
+        </Reveal>
+
+        <Reveal className="mt-8 flex flex-wrap justify-center gap-3">
+          {outcomeEmployersNoLogo.map((name) => (
             <span
               key={name}
               className="rounded-full border-[0.5px] border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition-transform duration-300 hover:scale-105 hover:border-accent hover:text-accent"

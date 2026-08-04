@@ -309,18 +309,30 @@ export const outcomeStats = [
   { value: '98.3%', label: 'Employed in the U.S.', sub: 'Post-graduation location' },
 ]
 
-export const outcomeEmployers = [
-  'Amazon',
-  'JPMorgan Chase & Co.',
-  'CVS Health',
-  'Tesla',
-  'Webber',
-  'Interlake Mecalux',
-  'Dragados USA',
-  'Ferrovial Construction US Corp.',
-  'IDOM, Inc.',
-  'Handshake',
+// Each logo below was sourced from the company's own official site (or
+// Wikidata's structured "logo image" property for the larger firms) and
+// verified, same standard as LogoMarquee. The 4 without a confirmable
+// official logo are listed as plain text in outcomeEmployersNoLogo instead.
+export const outcomeEmployerLogos = [
+  { name: 'Amazon', src: 'images/companies/outcomes/amazon.svg' },
+  { name: 'Tesla', src: 'images/companies/outcomes/tesla.svg' },
+  { name: 'JPMorgan Chase & Co.', src: 'images/companies/outcomes/jpmorgan-chase.svg' },
+  { name: 'CVS Health', src: 'images/companies/outcomes/cvs-health.svg' },
+  { name: 'Handshake', src: 'images/companies/outcomes/handshake.svg' },
+  { name: 'IDOM, Inc.', src: 'images/companies/outcomes/idom.png' },
+  { name: 'Ferrovial Construction US Corp.', src: 'images/companies/outcomes/ferrovial.svg' },
+  { name: 'Interlake Mecalux', src: 'images/companies/outcomes/interlake-mecalux.svg' },
+  { name: 'Dragados USA', src: 'images/companies/outcomes/dragados-usa.svg' },
+  { name: 'Rediantt LLC', src: 'images/companies/outcomes/rediantt.png' },
+  { name: 'Pinnacle Architecture, Inc', src: 'images/companies/outcomes/pinnacle-architecture.png' },
+  { name: 'Rebecca Everlene Trust Company', src: 'images/companies/outcomes/rebecca-everlene-trust.png' },
+  { name: 'Bright Mind Enrichment and Schooling', src: 'images/companies/outcomes/bright-mind-enrichment.png' },
+  { name: 'Lumena Energy', src: 'images/companies/outcomes/lumena-energy.png' },
+  { name: 'Leap of Faith (LOF), LLC.', src: 'images/companies/outcomes/leap-of-faith.webp' },
+  { name: 'Gabriel AI', src: 'images/companies/outcomes/gabriel-ai.ico' },
 ]
+
+export const outcomeEmployersNoLogo = ['Webber', 'One Community Inc.', 'Impact Partners Studio', 'Green2Gold']
 
 export const outcomesSource =
   'Source: Illinois Institute of Technology Career Services, First Destination Survey, Class of 2025 (NACE methodology). Figures cover all Illinois Tech graduate (Masters + Doctorate) programs, not Data Science/MAS specifically.'

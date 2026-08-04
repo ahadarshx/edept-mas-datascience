@@ -88,7 +88,7 @@ export const tracks = [
 export const whyUs = [
   {
     title: 'Strong Demand & High Earning Potential',
-    body: 'U.S. employers across industries continue to hire data scientists, AI engineers, and analytics professionals at scale, with strong starting salaries and sustained long-term career growth.',
+    body: 'Sustained hiring for data scientists and AI engineers, with strong starting salaries.',
   },
   {
     title: 'STEM Advantage for Intl. Students',
@@ -106,8 +106,8 @@ export const whyPathway = [
     body: 'Begin in India to significantly reduce tuition and living expenses.',
   },
   {
-    title: 'Two Credentials, Optimised Spend',
-    body: 'A PGP Certificate from Mahindra University and a U.S. Master’s degree from Illinois Tech, paying full U.S. costs only during the Chicago phase.',
+    title: 'Two Credentials, One Pathway',
+    body: 'A PGP Certificate from Mahindra University plus a U.S. Master’s from Illinois Tech.',
   },
   {
     title: 'Seamless Academic Progression',

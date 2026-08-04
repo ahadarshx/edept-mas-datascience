@@ -22,8 +22,10 @@ const pillarIcons = [GraduationCap, Wallet, LifeBuoy]
 const galleryImages = [
   { src: 'images/illinois-tech/12.jpg', alt: 'Illinois Institute of Technology campus life' },
   { src: 'images/mahindra-university/3.jpg', alt: 'Mahindra University students in a lab session' },
-  { src: 'images/illinois-tech/7.jpg', alt: 'Illinois Institute of Technology campus life' },
+  { src: 'images/chicago/business-district.jpg', alt: 'Chicago skyline at dusk' },
   { src: 'images/mahindra-university/5.jpg', alt: 'Mahindra University campus recreation' },
+  { src: 'images/illinois-tech/7.jpg', alt: 'Illinois Institute of Technology campus life' },
+  { src: 'images/chicago/transit.jpg', alt: 'Chicago "L" train with the downtown skyline behind it' },
 ]
 
 export function Home() {
@@ -163,7 +165,7 @@ export function Home() {
       </Reveal>
 
       {/* Mixed-campus gallery */}
-      <Reveal className="grid grid-cols-2 md:grid-cols-4 gap-1">
+      <Reveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
         {galleryImages.map((img) => (
           <div key={img.src} className="group overflow-hidden aspect-square">
             <img

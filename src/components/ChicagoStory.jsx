@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Reveal } from './Reveal'
 
 const IMAGES = [
   'images/chicago/business-district.jpg',
@@ -9,12 +8,13 @@ const IMAGES = [
   'images/illinois-tech/16.jpg',
 ]
 
-// Desktop: a wide, even split — sticky heading + landscape photo on the
-// left, compact numbered points on the right (no tall scroll-pacing). Each
-// point's own IntersectionObserver reports itself active once it crosses
-// the viewport's vertical center, crossfading the left photo to match.
-// Mobile: a horizontal snap-scroll card carousel instead of a vertical
-// stack, since a side-by-side split has no room on a phone screen.
+// Desktop: a wide, even split. The left column (heading + a short landscape
+// photo) stays vertically centered in the viewport while sticky. On the
+// right, only the point closest to the viewport's center is at full
+// opacity — the rest dim — so exactly one point has focus at a time,
+// crossfading the left photo to match. No numbers or divider lines, just
+// icon + text. Mobile: a horizontal snap-scroll card carousel instead,
+// since a side-by-side split has no room on a phone screen.
 export function ChicagoStory({ heading, points, icons }) {
   const [active, setActive] = useState(0)
   const refs = useRef([])
@@ -34,11 +34,13 @@ export function ChicagoStory({ heading, points, icons }) {
 
   return (
     <>
-      {/* Desktop: wide even split */}
+      {/* Desktop: wide even split. Left column centers itself in the viewport
+          while sticky, with a shorter photo. Right column keeps only the
+          in-focus point at full opacity as you scroll, the rest dimmed. */}
       <div className="hidden md:grid md:grid-cols-2 md:gap-x-16">
-        <div className="md:sticky md:top-24 md:h-fit">
+        <div className="md:sticky md:top-24 md:flex md:min-h-[calc(100vh-6rem)] md:flex-col md:justify-center">
           {heading}
-          <div className="relative mt-8 aspect-[3/2] overflow-hidden rounded-2xl">
+          <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl">
             {IMAGES.map((src, i) => (
               <img
                 key={src}
@@ -54,21 +56,19 @@ export function ChicagoStory({ heading, points, icons }) {
           </div>
         </div>
 
-        <div className="divide-y-[0.5px] divide-neutral-200">
+        <div>
           {points.map((p, i) => {
             const Icon = icons[i]
+            const isActive = active === i
             return (
-              <div key={p.title} ref={(el) => (refs.current[i] = el)} className="py-7 first:pt-0 last:pb-0">
-                <Reveal>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xl tracking-tight text-neutral-300">0{i + 1}</span>
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-muted/40 text-accent">
-                      <Icon size={18} strokeWidth={1.75} />
-                    </span>
-                    <h3 className="font-serif text-xl tracking-tight text-neutral-900">{p.title}</h3>
-                  </div>
-                  <p className="mt-2 pl-[3.25rem] text-neutral-600 leading-relaxed">{p.body}</p>
-                </Reveal>
+              <div key={p.title} ref={(el) => (refs.current[i] = el)} className="flex min-h-[40vh] flex-col justify-center">
+                <div className={`transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-30'}`}>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-muted/40 text-accent">
+                    <Icon size={18} strokeWidth={1.75} />
+                  </span>
+                  <h3 className="mt-4 font-serif text-2xl tracking-tight text-neutral-900">{p.title}</h3>
+                  <p className="mt-2 max-w-sm text-neutral-600 leading-relaxed">{p.body}</p>
+                </div>
               </div>
             )
           })}

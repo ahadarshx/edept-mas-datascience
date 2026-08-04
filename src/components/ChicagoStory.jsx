@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
 const IMAGES = [
-  'images/chicago/business-district.jpg',
-  'images/chicago/industry.jpg',
-  'images/chicago/academic.jpg',
-  'images/chicago/transit.jpg',
-  'images/illinois-tech/16.jpg',
+  { src: 'images/illinois-tech/10.jpg', position: 'object-[center_35%]' },
+  { src: 'images/illinois-tech/11.jpg', position: 'object-center' },
+  { src: 'images/chicago/business-district.jpg', position: 'object-center' },
+  { src: 'images/chicago/transit.jpg', position: 'object-[center_35%]' },
+  { src: 'images/illinois-tech/14.jpg', position: 'object-center' },
 ]
 
 // Desktop: a wide, even split. The left column (heading + a short landscape
@@ -47,14 +47,14 @@ export function ChicagoStory({ heading, points, icons }) {
               not the middle of the tall stretched cell above. */}
           <div className="md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:flex-col md:justify-center">
             {heading}
-            <div className="relative mt-10 aspect-[2/1] overflow-hidden rounded-2xl">
-              {IMAGES.map((src, i) => (
+            <div className="relative mt-8 max-w-md aspect-video overflow-hidden rounded-2xl">
+              {IMAGES.map((image, i) => (
                 <img
-                  key={src}
-                  src={src}
+                  key={image.src}
+                  src={image.src}
                   alt=""
                   aria-hidden="true"
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`absolute inset-0 h-full w-full object-cover ${image.position} transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     active === i ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
@@ -92,7 +92,7 @@ export function ChicagoStory({ heading, points, icons }) {
             return (
               <div key={p.title} className="w-[82%] shrink-0 snap-center overflow-hidden rounded-2xl border-[0.5px] border-neutral-200 bg-white">
                 <div className="aspect-[3/2] overflow-hidden">
-                  <img src={IMAGES[i]} alt="" className="h-full w-full object-cover" />
+                  <img src={IMAGES[i].src} alt="" className={`h-full w-full object-cover ${IMAGES[i].position}`} />
                 </div>
                 <div className="p-5">
                   <span className="font-mono text-lg tracking-tight text-neutral-300">0{i + 1}</span>

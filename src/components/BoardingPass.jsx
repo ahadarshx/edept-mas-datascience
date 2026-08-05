@@ -19,7 +19,7 @@ export function BoardingPass() {
   return (
     <div ref={ref} className="mx-auto max-w-3xl">
       <div className="relative flex flex-col overflow-hidden rounded-2xl border-[0.5px] border-neutral-200 bg-white shadow-[0_20px_50px_rgb(0,0,0,0.08)] md:flex-row">
-        <div className="flex-1 p-6 md:p-8">
+        <div className="flex-1 p-6 text-left md:p-8">
           <div className="group mb-5 overflow-hidden rounded-xl">
             <img
               src={TRACK_IMAGES.india}
